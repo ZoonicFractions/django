@@ -143,7 +143,54 @@ class ViewUser(View):
             return JsonResponse({'status':"failure", "message" : inst.args[0]})
 
 # Update User (Román Mauricio Elias Valencia)
-# Your code goes here...
+class UpdateUser(View):
+    # Allowing everyone to use this POST request.
+    @csrf_exempt
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+ 
+    def post(self, request):
+        # Decoding the payload
+        body = request.body.decode('utf-8')
+        body = json.loads(body)
+ 
+        # Checking that the input data is correct 
+        try:
+            # Getting the keys of the dictionary / JSON
+            keys = list(body.keys())
+ 
+            # Checking the number of parameters
+            if(len(keys) != 3):
+                raise Exception('Invalid number of parameters.')
+            mail = body[keys[0]]
+            atribute = body[keys[1]]
+            data = body[keys[2]]
+            
+            # Looking for the User.
+            foundUser = Usuario.objects.get(mail = mail)
+ 
+            atributes = ['role', 'user_name', 'password']
+            if(atribute not in atributes):
+                return Exception('Invalid atribute to change.')
+            
+            # Updating the field.
+            if(atribute == atributes[0]):
+                roles = ['Administrador', 'Profesor']
+                if(data not in roles):
+                    raise Exception('Invalid role.')
+                foundUser.role = data
+            elif(atribute == atributes[1]):
+                foundUser.user_name = data
+            elif(atribute == atributes[2]):
+                foundUser.password = hashlib.sha256(data.encode('ascii')).hexdigest()
+            
+            # Saving changes.
+            foundUser.save()
+    
+            return JsonResponse({'status':"success"}) 
+        
+        except Exception as inst:
+            return JsonResponse({'status':"failure", "message" : inst.args[0]})
 
 # Delete User (Ernesto Miranda Solís)
 # Your code goes here...
