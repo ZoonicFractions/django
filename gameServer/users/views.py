@@ -196,7 +196,47 @@ class UpdateUser(View):
 # Your code goes here...
 
 # Game Log Register (David Gonzalez Alanís)
-# Your code goes here...
+class GameLogRegister(View):
+    # Allowing everyone to use this POST request.
+    @csrf_exempt
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+ 
+    def post(self, request):
+        # Decoding the payload
+        body = request.body.decode('utf-8')
+        body = json.loads(body)
+ 
+        # Checking that the input data is correct 
+        try:
+            # Getting the keys of the dictionary / JSON
+            keys = list(body.keys())
+ 
+            # Checking the number of parameters
+            if(len(keys) != 6):
+                raise Exception('Invalid number of parameters.')
+            classroom = body[keys[0]]
+            role_number = body[keys[1]]
+            difficulty = body[keys[2]]
+            level = body[keys[3]]
+            grade = body[keys[4]]
+            time = body[keys[5]]
+ 
+            # Creating ans saving the Log.
+            new_log = Registro(
+                classroom = classroom,
+                role_number = role_number,
+                difficulty = difficulty,
+                level = level,
+                date = timezone.now(),
+                grade = grade,
+                time = time
+            )
+            new_log.save()
+            return JsonResponse({'status':"success"}) 
+ 
+        except Exception as inst:
+            return JsonResponse({'status':"failure", "message" : inst.args[0]})
 
 # View Student Logs (Fernando García Tejeda)
 # Your code goes here...
