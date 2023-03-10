@@ -11,13 +11,13 @@ public class MainMenu : MonoBehaviour
     public string StartScene;
     public Text error;
 
-    private string matricula;
-    private string salon;
+    private string listNum;
+    private string classroom;
 
     private bool valid;
 
-    public TMP_InputField matriculaIn;
-    public TMP_InputField salonIn;
+    public TMP_InputField listNumInput;
+    public TMP_InputField classroomInput;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +33,7 @@ public class MainMenu : MonoBehaviour
 
     public bool ValidateData()
     {
-        if (matricula != null && salon != null)
+        if (listNum != null && classroom != null)
         {
             valid = true;
             return valid;
@@ -49,8 +49,8 @@ public class MainMenu : MonoBehaviour
     {
         if (ValidateData())
         {
-            Debug.Log("matrícula: " + matricula);
-            Debug.Log("salón: "+ salon);
+            Debug.Log("Número de lista: " + listNum);
+            Debug.Log("salón: " + classroom);
             SceneManager.LoadScene(StartScene);
         }
         else
@@ -65,23 +65,23 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void Matricula()
+    public void ReadListNum()
     {
-        matricula = matriculaIn.text;
+        listNum = listNumInput.text;
     }
     
-    public void Salon()
+    public void ReadClassroom()
     {
-        salon = salonIn.text;
+        classroom = classroomInput.text;
     }
 
-    public string getMatricula()
+    public string getListNum()
     {
-        return matricula;
+        return listNum;
     }
 
-    public string getSalon()
+    public string getClassroom()
     {
-        return salon;
+        return classroom;
     }
 }
