@@ -141,3 +141,15 @@ class ViewUser(View):
             
         except Exception as inst:
             return JsonResponse({'status':"failure", "message" : inst.args[0]})
+
+# Update User (Román Mauricio Elias Valencia)
+# Your code goes here...
+
+# Delete User (Ernesto Miranda Solís)
+# Your code goes here...
+
+# Game Log Register (David Gonzalez Alanís)
+# Your code goes here...
+
+# View Student Logs (Fernando García Tejeda)
+# Your code goes here...
