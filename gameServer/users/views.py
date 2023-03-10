@@ -108,7 +108,7 @@ class ValidateUser(View):
 
         except Exception as inst:
             return JsonResponse({'status':"failure", "message" : inst.args[0]}) 
-            
+
 # View User (Administrador or Profesor)
 class ViewUser(View):
     # Allowing everyone to use this POST request.
@@ -239,7 +239,6 @@ class GameLogRegister(View):
             return JsonResponse({'status':"failure", "message" : inst.args[0]})
 
 # View Student Logs (Fernando García Tejeda)
-
 class ViewStudentLogs(View):
     # Allowing everyone to use this POST request.
     @csrf_exempt
@@ -282,4 +281,3 @@ class ViewStudentLogs(View):
         
         except Exception as inst:
             return JsonResponse({'status':"failure", "message" : inst.args[0]})
-# Your code goes here...
