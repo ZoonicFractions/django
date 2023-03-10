@@ -239,4 +239,47 @@ class GameLogRegister(View):
             return JsonResponse({'status':"failure", "message" : inst.args[0]})
 
 # View Student Logs (Fernando García Tejeda)
+
+class ViewStudentLogs(View):
+    # Allowing everyone to use this POST request.
+    @csrf_exempt
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def post(self, request):
+        # Decoding the payload
+        body = request.body.decode('utf-8')
+        body = json.loads(body)
+
+        # Checking that the input data is correct 
+        try:
+            # Getting the keys of the dictionary / JSON
+            keys = list(body.keys())
+
+            # Checking the number of parameters
+            if(len(keys) != 2):
+                raise Exception('Invalid number of parameters.')
+            
+            classroom = body[keys[0]]
+            role_number = body[keys[1]]
+            
+            # Filtering students.
+            foundStudents = list(Registro.objects.filter(
+                classroom = classroom,
+                role_number = role_number
+            ))
+            
+            # Pasing and storing the logs of the user
+            logs = []
+            for log in foundStudents:
+                log = {'classroom': log.classroom, 'role_number': log.role_number,
+                       'difficulty': log.difficulty, 'level': log.level,
+                       'date': log.date, 'grade': log.grade,
+                       'time': log.time, }
+                logs.append(log)
+            
+            return JsonResponse({'status':"success", 'logs': logs}) 
+        
+        except Exception as inst:
+            return JsonResponse({'status':"failure", "message" : inst.args[0]})
 # Your code goes here...
