@@ -34,6 +34,11 @@ public class FirstPersonAudio : MonoBehaviour
 
     void Reset()
     {
+        if (PauseMenu.gameIsPaused)
+        {
+            SetPlayingMovingAudio(null);
+            return;
+        }
         // Setup stuff.
         character = GetComponentInParent<FirstPersonMovement>();
         groundCheck = (transform.parent ?? transform).GetComponentInChildren<GroundCheck>();
@@ -64,19 +69,24 @@ public class FirstPersonAudio : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (PauseMenu.gameIsPaused)
+        {
+            SetPlayingMovingAudio(null);
+            return;
+        }
         // Play moving audio if the character is moving and on the ground.
         float velocity = Vector3.Distance(CurrentCharacterPosition, lastCharacterPosition);
         if (velocity >= velocityThreshold && groundCheck && groundCheck.isGrounded)
         {
-            if (crouch && crouch.IsCrouched)
+            if (crouch && crouch.IsCrouched && !PauseMenu.gameIsPaused)
             {
                 SetPlayingMovingAudio(crouchedAudio);
             }
-            else if (character.IsRunning)
+            else if (character.IsRunning && !PauseMenu.gameIsPaused)
             {
                 SetPlayingMovingAudio(runningAudio);
             }
-            else
+            else if(!PauseMenu.gameIsPaused)
             {
                 SetPlayingMovingAudio(stepAudio);
             }
