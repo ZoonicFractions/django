@@ -193,7 +193,37 @@ class UpdateUser(View):
             return JsonResponse({'status':"failure", "message" : inst.args[0]})
 
 # Delete User (Ernesto Miranda Solís)
-# Your code goes here...
+class DeleteUser(View):
+    # Allowing everyone to use this POST request.
+    @csrf_exempt
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+ 
+    def post(self, request):
+        # Decoding the payload
+        body = request.body.decode('utf-8')
+        body = json.loads(body)
+ 
+        # Checking that the input data is correct 
+        try:
+            # Getting the keys of the dictionary / JSON
+            keys = list(body.keys())
+ 
+            # Checking the number of parameters
+            if(len(keys) != 1):
+                raise Exception('Invalid number of parameters.')
+            mail = body[keys[0]]
+ 
+            # Looking for the User.
+            foundUser = Usuario.objects.get(mail = mail)
+ 
+            # Deleting the user.
+            foundUser.delete()
+            return JsonResponse({'status':"success"}) 
+ 
+        except Exception as inst:
+            return JsonResponse({'status':"failure", "message" : inst.args[0]})
+ 
 
 # Game Log Register (David Gonzalez Alanís)
 class GameLogRegister(View):
