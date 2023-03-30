@@ -9,5 +9,5 @@ urlpatterns = [
     path('update-user', views.UpdateUser.as_view(), name = 'update-user'),
     path('delete-user', views.DeleteUser.as_view(), name = 'delete-user'),
     path('create-log', views.GameLogRegister.as_view(), name = 'create-log'),
-    path('view-logs-student', views.ViewStudentLogs.as_view(), name = 'view-logs-student'),
+    path('view-logs-student/<str:classroom>/<int:role_number>/', views.ViewStudentLogs.as_view(), name = 'view-logs-student'),
 ]

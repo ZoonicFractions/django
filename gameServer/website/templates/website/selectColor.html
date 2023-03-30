@@ -1,0 +1,21 @@
+{% if iteration.grade < 50 %}
+    <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" style="width: {{iteration.grade}}%"
+        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+
+{% elif iteration.grade > 49 and iteration.grade < 70 %}
+    <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: {{iteration.grade}}%"
+        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+
+{% elif iteration.grade > 69 and iteration.grade < 90 %}
+    <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" style="width: {{iteration.grade}}%"
+        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+
+{% elif iteration.grade > 89 and iteration.grade < 100 %}
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{iteration.grade}}%"
+        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+
+{% elif iteration.grade == 100 %}
+    <div class="progress-bar bg-success" role="progressbar" style="width: {{iteration.grade}}%"
+        aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+
+{% endif %}

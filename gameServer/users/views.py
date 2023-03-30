@@ -275,23 +275,9 @@ class ViewStudentLogs(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
-    def post(self, request):
-        # Decoding the payload
-        body = request.body.decode('utf-8')
-        body = json.loads(body)
-
+    def get(self, request, classroom, role_number):
         # Checking that the input data is correct 
         try:
-            # Getting the keys of the dictionary / JSON
-            keys = list(body.keys())
-
-            # Checking the number of parameters
-            if(len(keys) != 2):
-                raise Exception('Invalid number of parameters.')
-            
-            classroom = body[keys[0]]
-            role_number = body[keys[1]]
-            
             # Filtering students.
             foundStudents = list(Registro.objects.filter(
                 classroom = classroom,

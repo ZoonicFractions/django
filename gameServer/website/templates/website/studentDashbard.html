@@ -1,0 +1,22 @@
+{% extends "website/joint.html" %}
+{% load static %}
+
+{% block main %}
+    {% if total_logs %}
+
+        {% include 'website/container.html' %}
+        
+    {% else %}
+        <!-- Content Row -->
+        <div class="row justify-content-center">
+            <div class="col-sm-6 mb-4">
+
+                <!-- Approach: Simple Card -->
+
+                {% include 'website/card.html' %}
+
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
