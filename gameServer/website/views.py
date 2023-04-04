@@ -50,3 +50,11 @@ def dashboard(request, classroom, role_number):
     context['last_level'] = last_level
 
     return render(request, 'website/studentDashbard.html', context)
+
+@csrf_exempt
+def forget_password(request):
+    return render(request, 'website/forget-password.html')
+
+@csrf_exempt
+def recover(request):
+    return render(request, 'website/recover.html')
