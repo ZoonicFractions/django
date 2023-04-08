@@ -10,9 +10,9 @@
     <form
         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
         <div class="input-group">
-            <input type="text" required class="form-control bg-light border-0 small" placeholder="Salón"
+            <input type="text" style="text-transform:uppercase" onkeydown="return /[a-zA-Z]/i.test(event.key)" required class="form-control bg-light border-0 small" placeholder="SALÓN"
                 aria-label="Search" aria-describedby="basic-addon2" id="input-class">
-            <input type="text" required class="form-control bg-light border-0 small" placeholder="Num. de Lista"
+            <input type="number" required class="form-control bg-light border-0 small" placeholder="# DE LISTA"
                 aria-label="Search" aria-describedby="basic-addon2" id="input-role-number">
             <div class="input-group-append">
                 <button class="btn btn-primary" type="button" id="button-search">

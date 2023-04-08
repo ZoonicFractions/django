@@ -283,7 +283,9 @@ class ViewStudentLogs(View):
                 classroom = classroom,
                 role_number = role_number
             ))
-            
+
+            if (not foundStudents):
+                raise Exception ('Student not found')
             # Pasing and storing the logs of the user
             logs = []
             for log in foundStudents:

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +52,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'gameServer.urls'
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:80',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000'
+]
 
 TEMPLATES = [
     {

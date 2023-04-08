@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
-from django.http.request import HttpRequest
 import requests
 
 # -- DASHBOARD
@@ -53,10 +52,5 @@ def dashboard(request, classroom, role_number):
     return render(request, 'website/studentDashbard.html', context)
 
 @csrf_exempt
-def forget_password(request):
-    return render(request, 'website/forget-password.html')
-
-@csrf_exempt
-def recover(request: HttpRequest):
-    if request.method == 'POST':
-        return render(request, 'website/recover.html')
+def notfound(request):
+    return render(request, 'website/notfound.html')
