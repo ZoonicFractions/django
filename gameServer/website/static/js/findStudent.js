@@ -9,7 +9,7 @@ document.getElementById('button-search').addEventListener("click",() => {
             if (data.status == 'success') {
                 location.href = `${classInput.toUpperCase()}/${roleNumberInput}`
             } else{
-                location.href = `notfound`
+                location.href = `/notfound`
             }
         })
     }
