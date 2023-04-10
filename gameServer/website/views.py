@@ -8,22 +8,22 @@ from .processing import get_average
 def index(request):
     all_logs = Registro.objects.filter(difficulty = 1)
     context = get_average(all_logs, 1)
-    return render(request, 'website/index.html', context)
+    return render(request, 'website/average.html', context)
 
 def general(request, difficulty):
     all_logs = Registro.objects.filter(difficulty = difficulty)
     context = get_average(all_logs, difficulty)
-    return render(request, 'website/index.html', context)
+    return render(request, 'website/average.html', context)
 
 def classroomA(request, difficulty):
     all_logs = Registro.objects.filter(difficulty = difficulty, classroom = 'A')
     context = get_average(all_logs, difficulty, 'A')
-    return render(request, 'website/index.html', context)
+    return render(request, 'website/average.html', context)
 
 def classroomB(request, difficulty):
     all_logs = Registro.objects.filter(difficulty = difficulty, classroom = 'B')
     context = get_average(all_logs, difficulty, 'B')
-    return render(request, 'website/index.html', context)
+    return render(request, 'website/average.html', context)
 
 def dashboard(request, difficulty, classroom, role_number):
     # from django.db.models import Max
