@@ -15,7 +15,7 @@ def get_average(query_set, difficulty, classroom = 'General'):
             avergae_grade[i] /= total_logs[i]
             average_time[i] /= total_logs[i]
 
-    return {'data':{'1':{'grade': avergae_grade[0], 'time': average_time[0]},
-            '2':{'grade': avergae_grade[1], 'time': average_time[1]},
-            '3':{'grade': avergae_grade[2], 'time': average_time[2]}}, 
+    return {'data':{'1':{'grade': round(avergae_grade[0], 2), 'time': round(average_time[0], 2)},
+            '2':{'grade': round(avergae_grade[1], 2), 'time': round(average_time[1], 2)},
+            '3':{'grade': round(avergae_grade[2], 2), 'time': round(average_time[2], 2)}}, 
             'difficulty': difficulty, 'classroom': classroom}

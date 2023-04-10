@@ -289,7 +289,7 @@ class ViewStudentLogs(View):
                 log = {'classroom': log.classroom, 'role_number': log.role_number,
                        'difficulty': log.difficulty, 'level': log.level,
                        'date': log.date.strftime("%d/%m/%Y : %H:%M:%S"), 
-                       'grade': log.grade, 'time': log.time, }
+                       'grade': round(log.grade, 2), 'time': log.time, }
                 logs.append(log)
             
             return JsonResponse({'status':"success", 'logs': logs}) 
@@ -317,7 +317,7 @@ class ViewStudentLogsChart(View):
             logs = {'date_list': [], 'grade_list':[]}
             for log in foundStudents:
                 logs['date_list'].append(log.date.strftime("%d/%m/%Y : %H:%M:%S"))
-                logs['grade_list'].append(log.grade)
+                logs['grade_list'].append(round(log.grade, 2))
             
             return JsonResponse({'status':"success", 'logs': logs}) 
         
