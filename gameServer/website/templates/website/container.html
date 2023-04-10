@@ -4,7 +4,7 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">
-            Dashboard de: {{ classroom }} - {{ role_number }}, Dificultad {{ difficulty }}
+            Dashboard de: <span id="classroom">{{ classroom }}</span> - <span id="role-number">{{ role_number }}</span>, Dificultad <span id="difficulty">{{ difficulty }}</span>
         </h1>
     </div>
     <!-- Content Row -->
@@ -105,7 +105,6 @@
                 {% include 'website/progressbarcard.html' %}
             {% endfor %}
         </div>
-
     </div>
 
     <!-- JavaScript -->

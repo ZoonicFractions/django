@@ -16,6 +16,9 @@
                     {% include 'website/selectColor.html' %}
                 </div>
             {% endfor %}
+            <div class="chart-area" id="div-chart-{{key}}">
+                <canvas id="myAreaChart-{{key}}"></canvas>
+            </div>
         {% else %}
             <p class="mb-0">Sin información disponible de este nivel.</p>
         {% endif %}

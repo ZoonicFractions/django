@@ -5,6 +5,7 @@ from .models import Usuario, Registro
 from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
 import re, json, hashlib
+from datetime import datetime
 
 # Creación de usuario (Administrador o Profesor)
 class CreateUser(View):
@@ -270,11 +271,6 @@ class GameLogRegister(View):
 
 # View Student Logs (Fernando García Tejeda)
 class ViewStudentLogs(View):
-    # Allowing everyone to use this POST request.
-    @csrf_exempt
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
-
     def get(self, request, difficulty, classroom, role_number):
         # Checking that the input data is correct 
         try:
@@ -292,9 +288,36 @@ class ViewStudentLogs(View):
             for log in foundStudents:
                 log = {'classroom': log.classroom, 'role_number': log.role_number,
                        'difficulty': log.difficulty, 'level': log.level,
-                       'date': log.date, 'grade': log.grade,
-                       'time': log.time, }
+                       'date': log.date.strftime("%d/%m/%Y : %H:%M:%S"), 
+                       'grade': log.grade, 'time': log.time, }
                 logs.append(log)
+            
+            return JsonResponse({'status':"success", 'logs': logs}) 
+        
+        except Exception as inst:
+            return JsonResponse({'status':"failure", "message" : inst.args[0]})
+
+# View Student Logs of a certain level 
+class ViewStudentLogsChart(View):
+    def get(self, request, difficulty, classroom, role_number, level):
+        # Checking that the input data is correct 
+        try:
+            # Filtering students.
+            foundStudents = list(Registro.objects.filter(
+                classroom = classroom,
+                role_number = role_number,
+                difficulty = difficulty,
+                level = level
+            ))
+
+            if (not foundStudents):
+                raise Exception ('Student not found')
+
+            # Pasing and storing the logs of the user
+            logs = {'date_list': [], 'grade_list':[]}
+            for log in foundStudents:
+                logs['date_list'].append(log.date.strftime("%d/%m/%Y : %H:%M:%S"))
+                logs['grade_list'].append(log.grade)
             
             return JsonResponse({'status':"success", 'logs': logs}) 
         
