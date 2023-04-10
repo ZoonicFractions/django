@@ -7,6 +7,6 @@ urlpatterns = [
     path('gen-dif/<int:difficulty>', views.general, name = 'general'),
     path('A-dif/<int:difficulty>', views.classroomA, name = 'classroomA'),
     path('B-dif/<int:difficulty>', views.classroomB, name = 'classroomB'),
-    path('<str:classroom>/<int:role_number>/', views.dashboard, name = 'dashboard'),
+    path('<int:difficulty>/<str:classroom>/<int:role_number>/', views.dashboard, name = 'dashboard'),
     path('notfound', views.notfound, name='notfound')
 ]

@@ -275,13 +275,14 @@ class ViewStudentLogs(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
-    def get(self, request, classroom, role_number):
+    def get(self, request, difficulty, classroom, role_number):
         # Checking that the input data is correct 
         try:
             # Filtering students.
             foundStudents = list(Registro.objects.filter(
                 classroom = classroom,
-                role_number = role_number
+                role_number = role_number,
+                difficulty = difficulty
             ))
 
             if (not foundStudents):

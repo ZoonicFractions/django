@@ -11,7 +11,7 @@
         {% if level %}
             {% for iteration in level %}
                 <h4 class="small font-weight-bold">Iteración de {{iteration.date}}<span
-                    class="float-right">{{iteration.grade}}</span></h4>
+                    class="float-right">{{iteration.grade}} pts. / {{iteration.time}} s.</span></h4>
                 <div class="progress mb-4">
                     {% include 'website/selectColor.html' %}
                 </div>
