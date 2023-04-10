@@ -1,13 +1,30 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 import requests
+from users.models import Registro
+from .processing import get_average
 
 # -- DASHBOARD
-@csrf_exempt
 def index(request):
-    return render(request, 'website/index.html')
+    all_logs = Registro.objects.filter(difficulty = 1)
+    context = get_average(all_logs, 1)
+    return render(request, 'website/index.html', context)
 
-@csrf_exempt
+def general(request, difficulty):
+    all_logs = Registro.objects.filter(difficulty = difficulty)
+    context = get_average(all_logs, difficulty)
+    return render(request, 'website/index.html', context)
+
+def classroomA(request, difficulty):
+    all_logs = Registro.objects.filter(difficulty = difficulty, classroom = 'A')
+    context = get_average(all_logs, difficulty, 'A')
+    return render(request, 'website/index.html', context)
+
+def classroomB(request, difficulty):
+    all_logs = Registro.objects.filter(difficulty = difficulty, classroom = 'B')
+    context = get_average(all_logs, difficulty, 'B')
+    return render(request, 'website/index.html', context)
+
 def dashboard(request, classroom, role_number):
     # Calling the Api
     response = requests.get(f'http://localhost:8000/api/view-logs-student/{classroom}/{role_number}')
@@ -51,6 +68,5 @@ def dashboard(request, classroom, role_number):
 
     return render(request, 'website/studentDashbard.html', context)
 
-@csrf_exempt
 def notfound(request):
     return render(request, 'website/notfound.html')

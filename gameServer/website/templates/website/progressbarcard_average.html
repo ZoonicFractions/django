@@ -1,0 +1,20 @@
+{% load static %}
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+            Nivel {{key}}
+        </h6>
+    </div>
+
+    <div class="card-body">
+        <!-- Automated Progress Bars -->
+        {% if level.grade %}
+            <h4 class="small font-weight-bold">Calificación y Tiempo Promedio<span class="float-right">{{level.grade}} pts. / {{level.time}} s.</span></h4>
+            <div class="progress mb-4">
+                {% include 'website/selectColor_average.html' %}
+            </div>
+        {% else %}
+            <p class="mb-0">Sin información disponible de este nivel.</p>
+        {% endif %}
+    </div>
+</div>

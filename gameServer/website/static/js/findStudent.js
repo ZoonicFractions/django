@@ -7,7 +7,7 @@ document.getElementById('button-search').addEventListener("click",() => {
         .then(response => response.json())
         .then(data => {
             if (data.status == 'success') {
-                location.href = `${classInput.toUpperCase()}/${roleNumberInput}`
+                location.href = `/${classInput.toUpperCase()}/${roleNumberInput}`
             } else{
                 location.href = `/notfound`
             }
