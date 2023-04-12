@@ -3,7 +3,6 @@ from django.http import HttpResponse, JsonResponse
 from django.views import View
 from .models import Usuario, Registro
 from django.views.decorators.csrf import csrf_exempt
-from django.utils import timezone
 import re, json, hashlib
 from datetime import datetime
 
@@ -34,7 +33,7 @@ class CreateUser(View):
             password = body[keys[2]]
             role = body[keys[3]]
 
-            # Chcking that all the variables are string type.
+            # Checking that all the variables are string type.
             if(not(isinstance(mail, str) and isinstance(user_name, str) and isinstance(password, str) and isinstance(role, str))):
                 raise Exception('Invalid type in some arguments.')
 
@@ -233,7 +232,7 @@ class GameLogRegister(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
  
-    def post(self, request):
+    def put(self, request):
         # Decoding the payload
         body = request.body.decode('utf-8')
         body = json.loads(body)
@@ -247,11 +246,17 @@ class GameLogRegister(View):
             if(len(keys) != 6):
                 raise Exception('Invalid number of parameters.')
             classroom = body[keys[0]]
-            role_number = body[keys[1]]
-            difficulty = body[keys[2]]
-            level = body[keys[3]]
-            grade = body[keys[4]]
-            time = body[keys[5]]
+            role_number = int(body[keys[1]])
+            difficulty = int(body[keys[2]])
+            level = int(body[keys[3]])
+            grade = float(body[keys[4]])
+            time = float(body[keys[5]])
+
+            # Checking that all the values are the data type they should.
+            if(not(isinstance(classroom, str) and isinstance(role_number, int) and 
+                   isinstance(difficulty, int) and isinstance(level, int) and 
+                   isinstance(grade, float) and isinstance(time, float))):
+                raise Exception('Invalid type in some arguments.')
  
             # Creating ans saving the Log.
             new_log = Registro(
@@ -259,7 +264,7 @@ class GameLogRegister(View):
                 role_number = role_number,
                 difficulty = difficulty,
                 level = level,
-                date = timezone.now(),
+                date = datetime.now(),
                 grade = grade,
                 time = time
             )
