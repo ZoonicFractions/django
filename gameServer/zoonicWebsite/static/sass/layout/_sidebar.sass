@@ -1,0 +1,62 @@
+@use '../globals/variables'
+.sidebar
+    z-index: 100
+
+    // Dimensions
+    width: 320px
+
+    // Views
+    background-color: variables.$main-color
+
+    @media (max-width: variables.$width-xlarge)
+        display: none
+
+// Brand div
+.sidebar-brand
+    // Dimensions
+    width: inherit
+
+    padding: 1.5rem 0
+    // Views
+    color: variables.$text-white
+
+.sidebar-brand a
+    color: variables.$text-white
+    font-weight: bold
+    font-size: 1.75rem
+    padding-left: 2rem
+
+// Children
+.side-brand span
+    display: inline-block
+    padding-right: 1rem
+
+.sidebar-menu li
+    width: inherit
+    margin-bottom: 0.5rem
+    padding-left: 1rem
+
+.sidebar-menu ul > li > p,
+.sidebar-menu ul > li > a
+    display: block
+    color: variables.$text-white
+    font-size: 1.3rem
+
+
+.sidebar-menu p > span:first-child,
+.sidebar-menu a > span:first-child
+    font-size: 1.5rem
+    padding-right: 1rem
+    padding-left: 1rem
+
+.sidebar-menu p.active
+.sidebar-menu a.active
+    background-color: variables.$text-white
+    color: variables.$main-color
+    border-radius: 30px 0 0 30px 
+    padding: 1rem 0
+
+    transition: background-color 0.5s
+
+.sidebar-menu p
+    cursor: pointer

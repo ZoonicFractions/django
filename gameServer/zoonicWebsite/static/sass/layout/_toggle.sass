@@ -1,0 +1,11 @@
+#nav-toggle
+    display: none
+
+#nav-toggle:checked + .sidebar
+    width: 100px
+
+#nav-toggle:checked + .sidebar span:last-child
+    display: none
+
+#nav-toggle:checked + .sidebar i
+    transform: rotate(180deg)

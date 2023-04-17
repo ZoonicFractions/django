@@ -1,0 +1,25 @@
+{% extends 'zoonicWebsite/components/levelCard.html' %}
+{% block level-card-title %}
+    <h3>
+        Nivel {{key}}
+    </h3>
+{% endblock %}
+{% block level-card-content %}
+    {% if level.grade %}
+        <p class="progress-bar-header">
+            <span>
+                Calificación y Tiempo Promedio
+            </span>
+            <span>
+                <span class="las la-clock"></span>
+                Tiempo: {{level.time}} s.
+            </span>
+            <span>
+                {{level.grade}} pts.
+            </span>
+        </p>
+        <div class="progress-bar {{level.grade}}"></div>
+    {% else %}
+        <p class="mb-0">Sin información disponible de este nivel.</p>
+    {% endif %}
+{% endblock %}

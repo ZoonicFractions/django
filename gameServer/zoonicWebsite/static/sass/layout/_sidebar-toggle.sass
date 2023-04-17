@@ -1,0 +1,27 @@
+@use '../globals/variables'
+.sidebar-toggle
+    // Display
+    display: flex
+    align-items: center
+    justify-content: center
+
+.sidebar-toggle label
+    // Dimensions
+    width: 60px
+    height: 60px
+
+    // Views
+    font-size: 2rem
+    background-color: variables.$main-color-unactive
+    color: variables.$text-white
+    border-radius: 50%
+
+    // Display
+    display: flex
+    align-items: center
+    justify-content: center
+
+.sidebar-toggle label:hover
+    transition: 0.6s
+    background-color: variables.$text-white
+    color: variables.$main-color-unactive

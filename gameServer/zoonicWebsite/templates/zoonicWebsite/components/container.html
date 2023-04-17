@@ -1,0 +1,56 @@
+{% load static %}
+<!-- Container Cards -->
+<div class="cards">
+    <div class="card-single">
+        <div class="card-content">
+            <div>
+                <h3>TOTAL LOGS</h3>
+                <span>{{total_logs}}</span>
+            </div>
+            <div>
+                <span class="las la-comment"></span>
+            </div>
+        </div>
+    </div>
+    <div class="card-single">
+        <div class="card-content">
+            <div>
+                <h3>LAST LEVEL</h3>
+                <span>{{last_level}}</span>
+            </div>
+            <div>
+                <span class="las la-award"></span>
+            </div>
+        </div>
+    </div>
+    <div class="card-single">
+        <div class="card-content">
+            <div>
+                <h3>BEST GRADE</h3>
+                <div class="card-content-data">
+                    <span>{{best_grade}}</span>
+                    <div class="progress-bar {{best_grade}}"></div>
+                </div>
+            </div>
+            <div>
+                <span class="las la-bell"></span>
+            </div>
+        </div>
+    </div>
+    <div class="card-single">
+        <div class="card-content">
+            <div>
+                <h3>BEST TIME</h3>
+                <span>{{best_time}} s.</span>
+            </div>
+            <div>
+                <span class="las la-clock"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Container Level Card -->
+{% for key, level in level_logs.items %}
+    {% include 'zoonicWebsite/components/levelContainer.html' %}
+{% endfor %}

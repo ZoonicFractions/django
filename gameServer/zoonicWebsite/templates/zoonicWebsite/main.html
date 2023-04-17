@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% include 'zoonicWebsite/components/head.html' %}
+<body>
+    <!-- Toggle for sidebar -->
+    <input type="checkbox" id="nav-toggle">
+
+    <!-- Sidebar -->
+    {% include 'zoonicWebsite/components/sidebar.html' %}
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Topbar -->
+        {% include 'zoonicWebsite/components/topbar.html' %}
+
+        <!-- Container -->
+        <main>
+            {% block container %}
+            {% endblock %}
+        </main>
+        
+        <!-- Footer -->
+        {% include 'zoonicWebsite/components/footer.html' %}
+    </div>
+    {% include 'zoonicWebsite/components/mainScripts.html' %}
+    {% block scripts %}
+    {% endblock %}
+</body>
+</html>

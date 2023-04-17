@@ -1,0 +1,30 @@
+{% extends 'zoonicWebsite/components/levelCard.html' %}
+{% block level-card-title %}
+    <h3>
+        Nivel {{key}}
+    </h3>
+{% endblock %}
+{% block level-card-content %}
+    {% if level %}
+        {% for iteration in level %}
+            <p class="progress-bar-header">
+                <span>
+                    Iteración de {{iteration.date}}
+                </span>
+                <span>
+                    <span class="las la-clock"></span>
+                    Tiempo: {{iteration.time}} s.
+                </span>
+                <span class="grade">
+                    {{iteration.grade}} pts.
+                </span>
+            </p>
+            <div class="progress-bar {{iteration.grade}}"></div>
+        {% endfor %}
+        <div class="chart-area" id="div-chart-{{key}}">
+            <canvas id="myAreaChart-{{key}}"></canvas>
+        </div>
+    {% else %}
+        <p>Sin información disponible de este nivel.</p>
+    {% endif %}
+{% endblock %}

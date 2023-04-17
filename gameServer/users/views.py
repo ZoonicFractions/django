@@ -67,30 +67,9 @@ class CreateUser(View):
 
 # Validate User (log-in)
 class ValidateUser(View):
-    # Allowing everyone to use this POST request.
-    @csrf_exempt
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
-    
-    def post(self, request):
-        # Decoding the payload
-        body = request.body.decode('utf-8')
-        body = json.loads(body)
-
+    def get(self, request, mail, password):
         # Checking that the input data is correct 
         try:
-            # Getting the keys of the dictionary / JSON
-            keys = list(body.keys())
-
-            # Checking the number of parameters
-            if(len(keys) != 2):
-                raise Exception('Invalid number of parameters')
-
-            # Naming the variables.
-            mail = body[keys[0]]
-            password = body[keys[1]]
-            password = hashlib.sha256(password.encode('ascii')).hexdigest()
-
             # Checking the mail is valid.
             # Regex for mail validation.
             regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
@@ -116,25 +95,21 @@ class ViewUser(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
-    def post(self, request):
-        # Decoding the payload
-        body = request.body.decode('utf-8')
-        body = json.loads(body)
-
+    def get(self, request, mail):
         # Checking that the input data is correct 
         try:
-            # Getting the keys of the dictionary / JSON
-            keys = list(body.keys())
-
-            # Checking the number of parameters
-            if(len(keys) != 1):
-                raise Exception('Invalid number of parameters')
-            
-            # Naming the variables.
-            mail = body[keys[0]]
-        
+            # Checking the mail is valid.
+            # Regex for mail validation.
+            regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
+            if(not re.fullmatch(regex, mail)):
+                raise Exception('Invalid e-mail.')
+ 
             # Looking for the User.
             foundUser = Usuario.objects.get(mail = mail)
+
+            if(not foundUser):
+                raise Exception('E-mail not linked to any account.')
+
             (mail, role, user_name) = (foundUser.mail, foundUser.role, foundUser.user_name)
             
             return JsonResponse({'status':"success", "information" : {"mail" : mail, "user_name" : user_name, "role" : role}}) 
@@ -149,7 +124,7 @@ class UpdateUser(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
  
-    def post(self, request):
+    def put(self, request):
         # Decoding the payload
         body = request.body.decode('utf-8')
         body = json.loads(body)
@@ -199,7 +174,7 @@ class DeleteUser(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
  
-    def post(self, request):
+    def delete(self, request):
         # Decoding the payload
         body = request.body.decode('utf-8')
         body = json.loads(body)
@@ -294,7 +269,7 @@ class ViewStudentLogs(View):
                 log = {'classroom': log.classroom, 'role_number': log.role_number,
                        'difficulty': log.difficulty, 'level': log.level,
                        'date': log.date.strftime("%d/%m/%Y : %H:%M:%S"), 
-                       'grade': round(log.grade, 2), 'time': log.time, }
+                       'grade': round(log.grade, 2), 'time': round(log.time, 2), }
                 logs.append(log)
             
             return JsonResponse({'status':"success", 'logs': logs}) 

@@ -1,0 +1,15 @@
+{% extends 'zoonicWebsite/main.html' %}
+{% block container %}
+    {% if classroom == 'General' %}
+    <h1 class="container-title">
+        Dashboard de Promedio {{classroom}}, Dificultad {{difficulty}}
+    </h1>
+    {% else %}
+    <h1 class="container-title">
+        Dashboard de Promedio Salón {{classroom}}, Dificultad {{difficulty}}
+    </h1>
+    {% endif %}
+    {% for key, level in data.items %}
+        {% include 'zoonicWebsite/components/averageContainer.html' %}
+    {% endfor %}
+{% endblock %}

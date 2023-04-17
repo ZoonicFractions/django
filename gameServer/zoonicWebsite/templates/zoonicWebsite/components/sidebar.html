@@ -1,0 +1,56 @@
+{% load static %}
+<div class="sidebar">
+    <div class="sidebar-brand">
+        <a href="{% url 'zoonicWebsite:index' %}">
+            <span class="las la-paw"></span><span> Zoonic</span>
+        </a>
+    </div>
+    <div class="sidebar-menu">
+        <ul>
+            <li>
+                <p class="sidebar-menu-paragraph" id="GEN">
+                    <span class="las la-igloo"></span><span> General</span>
+                </p>
+                <div class="toggle-menu" id="GEN">
+                    <a href="{% url 'zoonicWebsite:general' 1 %}" class="{% if request.path == '/dash/gen-dif/1' or request.path == '/dash/' %}active{% else %}{% endif %}">
+                        <span>1</span><span>Dificultad 1</span>
+                    </a>
+                    <a href="{% url 'zoonicWebsite:general' 2 %}" class="{% if request.path == '/dash/gen-dif/2' %}active{% else %}{% endif %}">
+                        <span>2</span><span>Dificultad 2</span>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <p class="sidebar-menu-paragraph" id="A">
+                    <span>A</span><span> Salón A</span>
+                </p>
+                <div class="toggle-menu" id="A">
+                    <a href="{% url 'zoonicWebsite:classroomA' 1 %}" class="{% if request.path == '/dash/A-dif/1' %}active{% else %}{% endif %}">
+                        <span>1</span><span>Dificultad 1</span>
+                    </a>
+                    <a href="{% url 'zoonicWebsite:classroomA' 2 %}" class="{% if request.path == '/dash/A-dif/2' %}active{% else %}{% endif %}">
+                        <span>2</span><span>Dificultad 2</span>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <p class="sidebar-menu-paragraph" id="B">
+                    <span>B</span><span> Salón B</span>
+                </p>
+                <div class="toggle-menu" id="B">
+                    <a href="{% url 'zoonicWebsite:classroomB' 1 %}" class="{% if request.path == '/dash/B-dif/1' %}active{% else %}{% endif %}">
+                        <span>1</span><span>Dificultad 1</span>
+                    </a>
+                    <a href="{% url 'zoonicWebsite:classroomB' 2 %}" class="{% if request.path == '/dash/B-dif/2' %}active{% else %}{% endif %}">
+                        <span>2</span><span>Dificultad 2</span>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="sidebar-toggle">
+        <label for="nav-toggle">
+            <i class="las la-angle-left"></i>
+        </label>
+    </div>
+</div>
