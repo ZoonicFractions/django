@@ -28,6 +28,13 @@ header
         .card-single span
             font-size: 1rem
 
+.brand-wrapper
+    color: variables.$main-color
+    font-size: 1.5rem
+
+.brand-wrapper a
+    color: variables.$main-color
+    
 .search-wrapper
     // Centering Vertically everything inside
     display: flex
@@ -73,6 +80,23 @@ header
     height: 50px
     width: 50px
 
+.user-wrapper span
+    // Display
+    display: flex
+    justify-content: center
+    align-items: center
+
+    // Dimensions
+    height: 50px
+    width: 50px
+    font-size: 2rem
+
+    // Views
+    background-color: variables.$main-color-active
+    color: variables.$text-white
+    border-radius: 50%
+    margin-left: 0.5rem
+
 .user-wrapper small
     display: inline-block
     color: variables.$text-grey
@@ -84,7 +108,3 @@ header label
 
     @media (max-width: variables.$width-large)
         display: inline
-
-.brand-wrapper
-    color: variables.$main-color
-    font-size: 1.5rem

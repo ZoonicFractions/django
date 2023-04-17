@@ -1,0 +1,26 @@
+{% extends 'zoonicWebsite/components/levelCard.html' %}
+{% block level-card-title %}
+    <h3>
+        Seleccione el usuario que quiera editar.
+    </h3>
+{% endblock %}
+{% block level-card-content %}
+    <div class="user-row" id="user-row-header">
+        <span>Username</span>
+        <span>E-Mail</span>
+        <span>Nombre</span>
+        <span>Apellido</span>
+        <span>Staff</span>
+        <span>Editar</span>
+    </div>
+    {% for i in users %}
+        <div class="user-row">
+            <span>{{i.username}}</span>
+            <span>{{i.email}}</span>
+            <span>{{i.first_name}}</span>
+            <span>{{i.last_name}}</span>
+            <span>{{i.is_staff}}</span>
+            <span><a href="{% url 'zoonicWebsite:general' 1 %}">Editar</a></span>
+        </div>
+    {% endfor %}
+{% endblock %}

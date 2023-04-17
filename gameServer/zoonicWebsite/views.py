@@ -3,6 +3,7 @@ from users.models import Registro
 from .processing import get_average
 import requests
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_protect
 
@@ -91,15 +92,24 @@ def log_in(request):
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
 
-        if user is not None:
+        if user:
             login(request, user)
-            return redirect('zoonicWebsite:general', 1)
-        
+
+            if(user.is_staff):
+                return redirect('zoonicWebsite:read')
+            else:
+                return redirect('zoonicWebsite:general', 1)
         else:
             messages.error(request,("Usuario o password incorrectos."))
             return redirect("zoonicWebsite:log_in")
         
     return render(request, 'zoonicWebsite/login.html')
 
-def crud(request):
-    return render(request, 'zoonicWebsite/crud.html')
+def log_out(request):
+    logout(request)
+    return redirect('zoonicWebsite:log_in')
+
+def readUsers(request):
+    all_logs = User.objects.filter()
+    context = {'users': list(all_logs)}
+    return render(request, 'zoonicWebsite/readUsers.html', context)

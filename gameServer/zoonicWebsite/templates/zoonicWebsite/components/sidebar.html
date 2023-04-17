@@ -7,6 +7,13 @@
     </div>
     <div class="sidebar-menu">
         <ul>
+            {% if request.user.is_staff %}
+                <li>
+                    <a href="{% url 'zoonicWebsite:read' %}">
+                        <span class="las la-user-cog"></span><span>Usuarios</span>
+                    </a>
+                </li>
+            {% endif %}
             <li>
                 <p class="sidebar-menu-paragraph" id="GEN">
                     <span class="las la-igloo"></span><span> General</span>

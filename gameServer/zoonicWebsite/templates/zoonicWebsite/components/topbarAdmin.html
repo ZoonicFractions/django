@@ -3,7 +3,9 @@
     <!-- Icon and brand name -->
     <div class="brand-wrapper">
         <h2>
-            <span class="las la-paw"></span> Zoonic
+            <a href="{% url 'zoonicWebsite:general' 1 %}">
+                <span class="las la-paw"></span> Zoonic
+            </a>
         </h2>
     </div>
 
@@ -14,5 +16,8 @@
             <h3>{{request.user}}</h3>
             <small>{% if request.user.is_staff %}Admin{% else %}Profesor{% endif %}</small>
         </div>
+        <a href="{% url 'zoonicWebsite:log_out' %}">
+            <span class="las la-sign-out-alt"></span>
+        </a>
     </div>
 </header>

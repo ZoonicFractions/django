@@ -10,5 +10,6 @@ urlpatterns = [
     path('<int:difficulty>/<str:classroom>/<int:role_number>/', views.dashboard, name = 'dashboard'),
     path('notfound', views.notfound, name = 'notfound'),
     path('', views.log_in, name = 'log_in'),
-    path('crud', views.crud, name = 'crud'),
+    path('log_out', views.log_out, name = 'log_out'),
+    path('read', views.readUsers, name = 'read'),
 ]
