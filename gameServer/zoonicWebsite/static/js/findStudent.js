@@ -8,9 +8,9 @@ document.getElementById('button-search').addEventListener("click",() => {
         .then(response => response.json())
         .then(data => {
             if (data.status == 'success') {
-                location.href = `/dash/${difficultyInput}/${classInput.toUpperCase()}/${roleNumberInput}`
+                location.href = `/dashboard/${difficultyInput}/${classInput.toUpperCase()}/${roleNumberInput}`
             } else{
-                location.href = `/dash/notfound`
+                location.href = `/dashboard/notfound`
             }
         })
     }
