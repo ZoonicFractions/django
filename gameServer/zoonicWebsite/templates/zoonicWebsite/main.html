@@ -1,4 +1,5 @@
 {% load static %}
+{% csrf_token %}
 <!DOCTYPE html>
 <html lang="en">
 {% include 'zoonicWebsite/components/head.html' %}
@@ -7,12 +8,14 @@
     <input type="checkbox" id="nav-toggle">
 
     <!-- Sidebar -->
-    {% include 'zoonicWebsite/components/sidebar.html' %}
+    {% block sidebar %}
+    {% endblock %}
 
     <!-- Main Content -->
     <div class="main-content">
         <!-- Topbar -->
-        {% include 'zoonicWebsite/components/topbar.html' %}
+        {% block topbar %}
+        {% endblock %}
 
         <!-- Container -->
         <main>

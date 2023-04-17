@@ -1,5 +1,11 @@
 {% extends 'zoonicWebsite/main.html' %}
 {% load static %}
+{% block sidebar %}
+    {% include 'zoonicWebsite/components/sidebar.html' %}
+{% endblock %}
+{% block topbar %}
+    {% include 'zoonicWebsite/components/topbar.html' %}
+{% endblock %}
 {% block container %}
     <h1 class="container-title">
         Dashboard de: <span id="classroom">{{ classroom }}</span> - <span id="role-number">{{ role_number }}</span>, Dificultad <span id="difficulty">{{ difficulty }}</span>

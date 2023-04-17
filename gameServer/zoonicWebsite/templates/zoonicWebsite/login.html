@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% include 'zoonicWebsite/components/head.html' %}
+<body>
+    <div class="login-background">
+        <div class="login-container">
+            <a href="{% url 'zoonicWebsite:log_in' %}">
+                <span class="las la-paw"></span><span> Zoonic</span>
+            </a>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="text" id="user-name" placeholder="Username" name="username">
+                <input type="password" id="password" placeholder="Password" name="password">
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+                <input type="submit" value="Log In">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

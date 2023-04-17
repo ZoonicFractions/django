@@ -1,0 +1,58 @@
+@use '../globals/variables'
+.login-background
+    // Dimensions
+    height: inherit
+    width: inherit
+
+    // Views
+    background-color: variables.$background-grey
+
+    // Display
+    display: flex
+    justify-content: center
+    align-items: center
+
+.login-container
+    // Dimensions
+    height: 70%
+    width: 70%
+
+    // Views
+    background-color: variables.$main-color
+    border-radius: 10px
+    box-shadow: 44px 56px 319px -41px rgba(0,0,0,0.65)
+    -webkit-box-shadow: 44px 56px 319px -41px rgba(0,0,0,0.65)
+    -moz-box-shadow: 44px 56px 319px -41px rgba(0,0,0,0.65)
+
+    // Display
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+
+.login-container form
+    // Dimensions
+    width: 100%
+
+    // Display
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+
+.login-container a
+    color: variables.$text-white
+    font-weight: bold
+    font-size: 2rem
+    margin-bottom: 1.5rem
+
+.login-container input
+    width: 70%
+    margin-bottom: 1rem
+    padding: 0.5rem
+    border-radius: 10px
+    border: none
+
+.login-container input[type=submit]
+    background-color: variables.$main-color-unactive
+    color: variables.$text-white
