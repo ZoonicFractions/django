@@ -4,7 +4,7 @@ from django.views import View
 from .models import Usuario, Registro
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
-import re, json, hashlib
+import re, json
 from datetime import datetime
 
 # Creación de usuario (Administrador o Profesor)
@@ -25,40 +25,39 @@ class CreateUser(View):
             keys = list(body.keys())
 
             # Checking the number of parameters
-            if(len(keys) != 4):
+            if(len(keys) != 6):
                 raise Exception('Invalid number of parameters')
 
             # Naming the variables.
-            mail = body[keys[0]]
-            user_name = body[keys[1]]
-            password = body[keys[2]]
-            role = body[keys[3]]
+            username = body[keys[0]]
+            email = body[keys[1]]
+            first_name = body[keys[2]]
+            last_name = body[keys[3]]
+            password = body[keys[4]]
+            is_staff = body[keys[5]]
 
             # Checking that all the variables are string type.
-            if(not(isinstance(mail, str) and isinstance(user_name, str) and isinstance(password, str) and isinstance(role, str))):
+            if(not(isinstance(email, str) and isinstance(username, str) and isinstance(password, str) and isinstance(is_staff, bool))):
                 raise Exception('Invalid type in some arguments.')
 
             # Checking the mail is valid.
             # Regex for mail validation.
             regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
-            if(not re.fullmatch(regex, mail)):
+            if(not re.fullmatch(regex, email)):
                 raise Exception('Invalid e-mail.')
-            
-            # Encrypting the password.
-            password = hashlib.sha256(password.encode('ascii')).hexdigest()
-            
-            # Checking that the role is valid
-            roles = ['Administrador', 'Profesor']
-            if(role not in roles):
-                raise Exception('Invalid role.')
-
+    
             # Storing the new user in the database.
-            new_user = Usuario(
-                mail = mail,
-                role = role,
-                user_name = user_name,
-                password = password
+            new_user = User(
+                username = username,
+                email = email,
+                first_name = first_name,
+                last_name = last_name,
+                is_staff = is_staff
             )
+            # Encrypting the password.
+            new_user.set_password(password)
+
+            # Storing data.
             new_user.save()
 
             return JsonResponse({'status':"success"}) 
@@ -118,7 +117,7 @@ class ViewUser(View):
         except Exception as inst:
             return JsonResponse({'status':"failure", "message" : inst.args[0]})
 
-# Update User
+# Update User Data
 class UpdateUser(View):
     # Allowing everyone to use this POST request.
     @csrf_exempt
@@ -149,6 +148,45 @@ class UpdateUser(View):
             foundUser.first_name = body[keys[3]]
             foundUser.last_name = body[keys[4]]
             foundUser.is_staff = body[keys[5]]
+
+            # Saving changes.
+            foundUser.save()
+    
+            return JsonResponse({'status':"success"}) 
+        
+        except Exception as inst:
+            return JsonResponse({'status':"failure", "message" : inst.args[0]})
+
+# Update User Data & Password
+class UpdateUserPassword(View):
+    # Allowing everyone to use this POST request.
+    @csrf_exempt
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+    def put(self, request):
+        # Decoding the payload
+        body = request.body.decode('utf-8')
+        body = json.loads(body)
+ 
+        # Checking that the input data is correct 
+        try:
+            # Getting the keys of the dictionary / JSON
+            keys = list(body.keys())
+ 
+            # Checking the number of parameters
+            if(len(keys) != 7):
+                raise Exception('Invalid number of parameters.')
+            
+            # Looking for the User.
+            foundUser = User.objects.get(username = body[keys[0]])
+            
+            # Changing parameters
+            foundUser.username = body[keys[1]]
+            foundUser.email = body[keys[2]]
+            foundUser.first_name = body[keys[3]]
+            foundUser.last_name = body[keys[4]]
+            foundUser.is_staff = body[keys[5]]
+            foundUser.set_password(body[keys[6]])
 
             # Saving changes.
             foundUser.save()

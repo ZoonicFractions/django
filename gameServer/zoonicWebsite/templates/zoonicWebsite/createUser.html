@@ -7,38 +7,37 @@
 {% endblock %}
 {% block container %}
     <h1 class="container-title">
-        Editor de <span id="primary_key">{{username}}</span>
+        Creador de Usuario
     </h1>
 
     <div class="edit-card">
         <div class="user-form-line">
-            Username:<input type="text" id="username-input" value="{{username}}" required>
+            Username:<input type="text" id="username-input"" required>
         </div>
         <div class="user-form-line">
-            E-Mail: <input type="email" id="email-input" value="{{email}}">
+            E-Mail: <input type="email" id="email-input">
         </div>
         <div class="user-form-line">
-            Nombre: <input type="text" id="firstname-input" value="{{first_name}}">
+            Nombre: <input type="text" id="firstname-input">
         </div>
         <div class="user-form-line">
-            Apellido(s): <input type="text" id="lastname-input" value="{{last_name}}">
+            Apellido(s): <input type="text" id="lastname-input">
         </div>
         <div class="user-form-line">
             Contraseña: <input type="password" id="password-input">
         </div>
         <div class="user-form-line">
             Staff: <div class="checkbox-apple">
-                    <input class="yep" id="isstaff-input" type="checkbox" {% if is_staff %}checked{% endif %}>
+                    <input class="yep" id="isstaff-input" type="checkbox">
                     <label for="isstaff-input"></label>
                     </div>
         </div>
         <div class="user-form-buttons">
             <button onclick="location.href='{% url "zoonicWebsite:read" %}'">Regresar</button>
-            <button id="eliminate-user">Eliminar</button>
-            <button id="update-user">Guardar</button>
+            <button id="create-user">Guardar</button>
         </div>
     </div>
 {% endblock %}
 {% block scripts %}
-<script type="text/javascript" src="{% static 'js/updateDeleteUser.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/createUser.js' %}"></script>
 {% endblock %}

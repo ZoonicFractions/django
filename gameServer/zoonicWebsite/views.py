@@ -123,7 +123,7 @@ def readUsers(request):
     else:
         return redirect("zoonicWebsite:log_in")
 
-def updateDeleteUsers(request, username):
+def updateDeleteUser(request, username):
     if request.user.is_authenticated:
         user = User.objects.filter(username = username)
         user = user[0]
@@ -131,5 +131,11 @@ def updateDeleteUsers(request, username):
                 'first_name': user.first_name, 'last_name': user.last_name,
                 'is_staff': int(user.is_staff)}
         return render(request, 'zoonicWebsite/updateDeleteUser.html', context)
+    else:
+        return redirect("zoonicWebsite:log_in")
+
+def createUser(request):
+    if request.user.is_authenticated:
+        return render(request, 'zoonicWebsite/createUser.html')
     else:
         return redirect("zoonicWebsite:log_in")

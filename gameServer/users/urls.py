@@ -7,6 +7,7 @@ urlpatterns = [
     path('validate-user/<str:mail>/<str:password>', views.ValidateUser.as_view(), name = 'validate-user'),
     path('view-user/<str:mail>', views.ViewUser.as_view(), name = 'view-user'),
     path('update-user', views.UpdateUser.as_view(), name = 'update-user'),
+    path('update-userpassword', views.UpdateUserPassword.as_view(), name = 'update-userpassword'),
     path('delete-user/<str:username>', views.DeleteUser.as_view(), name = 'delete-user'),
     path('create-log', views.GameLogRegister.as_view(), name = 'create-log'),
     path('view-logs-student/<int:difficulty>/<str:classroom>/<int:role_number>/', views.ViewStudentLogs.as_view(), name = 'view-logs-student'),
