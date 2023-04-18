@@ -3,5 +3,11 @@
     {% include 'zoonicWebsite/components/topbarAdmin.html' %}
 {% endblock %}
 {% block container %}
+    <h1 class="container-title">
+        Usuarios
+    </h1>
     {% include 'zoonicWebsite/components/crudCard.html' %}
+    <button onclick="location.href='{% url 'zoonicWebsite:general' 1 %}'" class="dashboard-button">
+        Ir al Dashboard
+    </button>
 {% endblock %}

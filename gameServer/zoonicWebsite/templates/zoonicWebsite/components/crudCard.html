@@ -20,7 +20,7 @@
             <span>{{i.first_name}}</span>
             <span>{{i.last_name}}</span>
             <span>{{i.is_staff}}</span>
-            <span><a href="{% url 'zoonicWebsite:general' 1 %}">Editar</a></span>
+            <span><a href="{% url 'zoonicWebsite:updateDelete' i.username %}">Editar</a></span>
         </div>
     {% endfor %}
 {% endblock %}

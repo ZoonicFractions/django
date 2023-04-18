@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views import View
 from .models import Usuario, Registro
+from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 import re, json, hashlib
 from datetime import datetime
@@ -117,13 +118,14 @@ class ViewUser(View):
         except Exception as inst:
             return JsonResponse({'status':"failure", "message" : inst.args[0]})
 
-# Update User (Román Mauricio Elias Valencia)
+# Update User
 class UpdateUser(View):
     # Allowing everyone to use this POST request.
     @csrf_exempt
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
- 
+    
+    #{pk, username, email, first_name, last_name, is_staff}
     def put(self, request):
         # Decoding the payload
         body = request.body.decode('utf-8')
@@ -135,30 +137,19 @@ class UpdateUser(View):
             keys = list(body.keys())
  
             # Checking the number of parameters
-            if(len(keys) != 3):
+            if(len(keys) != 6):
                 raise Exception('Invalid number of parameters.')
-            mail = body[keys[0]]
-            atribute = body[keys[1]]
-            data = body[keys[2]]
             
             # Looking for the User.
-            foundUser = Usuario.objects.get(mail = mail)
- 
-            atributes = ['role', 'user_name', 'password']
-            if(atribute not in atributes):
-                return Exception('Invalid atribute to change.')
+            foundUser = User.objects.get(username = body[keys[0]])
             
-            # Updating the field.
-            if(atribute == atributes[0]):
-                roles = ['Administrador', 'Profesor']
-                if(data not in roles):
-                    raise Exception('Invalid role.')
-                foundUser.role = data
-            elif(atribute == atributes[1]):
-                foundUser.user_name = data
-            elif(atribute == atributes[2]):
-                foundUser.password = hashlib.sha256(data.encode('ascii')).hexdigest()
-            
+            # Changing parameters
+            foundUser.username = body[keys[1]]
+            foundUser.email = body[keys[2]]
+            foundUser.first_name = body[keys[3]]
+            foundUser.last_name = body[keys[4]]
+            foundUser.is_staff = body[keys[5]]
+
             # Saving changes.
             foundUser.save()
     
@@ -167,30 +158,18 @@ class UpdateUser(View):
         except Exception as inst:
             return JsonResponse({'status':"failure", "message" : inst.args[0]})
 
-# Delete User (Ernesto Miranda Solís)
+# Delete User
 class DeleteUser(View):
     # Allowing everyone to use this POST request.
     @csrf_exempt
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
  
-    def delete(self, request):
-        # Decoding the payload
-        body = request.body.decode('utf-8')
-        body = json.loads(body)
- 
+    def delete(self, request, username): 
         # Checking that the input data is correct 
         try:
-            # Getting the keys of the dictionary / JSON
-            keys = list(body.keys())
- 
-            # Checking the number of parameters
-            if(len(keys) != 1):
-                raise Exception('Invalid number of parameters.')
-            mail = body[keys[0]]
- 
             # Looking for the User.
-            foundUser = Usuario.objects.get(mail = mail)
+            foundUser = User.objects.get(username = username)
  
             # Deleting the user.
             foundUser.delete()
@@ -198,9 +177,8 @@ class DeleteUser(View):
  
         except Exception as inst:
             return JsonResponse({'status':"failure", "message" : inst.args[0]})
- 
 
-# Game Log Register (David Gonzalez Alanís)
+# Game Log Register
 class GameLogRegister(View):
     # Allowing everyone to use this POST request.
     @csrf_exempt
@@ -249,7 +227,7 @@ class GameLogRegister(View):
         except Exception as inst:
             return JsonResponse({'status':"failure", "message" : inst.args[0]})
 
-# View Student Logs (Fernando García Tejeda)
+# View Student Logs
 class ViewStudentLogs(View):
     def get(self, request, difficulty, classroom, role_number):
         # Checking that the input data is correct 

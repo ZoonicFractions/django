@@ -15,17 +15,6 @@
 .level-card h3
     color: variables.$main-color
 
-.level-card table,
-.level-card tbody
-    // Dimensions
-    display: table
-    width: 100%
-    border-collapse: collapse
-
-.level-card tbody tr
-    border-bottom: solid variables.$main-color
-
-
 .level-card .user-row
     // Display
     display: grid
@@ -48,9 +37,10 @@
 #user-row-header
     font-weight: 700
 
-.level-card .user-row button
-    padding: 0.25rem
+.level-card .user-row a
+    padding: 0.5rem
     border-radius: 10px
     width: 100%
 
-    border: variables.$main-color
+    background-color: variables.$main-color
+    color: variables.$text-white

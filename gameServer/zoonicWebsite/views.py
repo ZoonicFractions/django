@@ -9,6 +9,12 @@ from django.views.decorators.csrf import csrf_protect
 
 
 # -- DASHBOARD
+def index(request):
+    if request.user.is_authenticated:
+        return redirect("zoonicWebsite:general", 1)
+    else:
+        return redirect("zoonicWebsite:log_in")
+
 def general(request, difficulty):
     if request.user.is_authenticated:
         all_logs = Registro.objects.filter(difficulty = difficulty)
@@ -110,6 +116,20 @@ def log_out(request):
     return redirect('zoonicWebsite:log_in')
 
 def readUsers(request):
-    all_logs = User.objects.filter()
-    context = {'users': list(all_logs)}
-    return render(request, 'zoonicWebsite/readUsers.html', context)
+    if request.user.is_authenticated:
+        all_logs = User.objects.filter()
+        context = {'users': list(all_logs)}
+        return render(request, 'zoonicWebsite/readUsers.html', context)
+    else:
+        return redirect("zoonicWebsite:log_in")
+
+def updateDeleteUsers(request, username):
+    if request.user.is_authenticated:
+        user = User.objects.filter(username = username)
+        user = user[0]
+        context = {'username': user.username, 'email': user.email, 
+                'first_name': user.first_name, 'last_name': user.last_name,
+                'is_staff': int(user.is_staff)}
+        return render(request, 'zoonicWebsite/updateDeleteUser.html', context)
+    else:
+        return redirect("zoonicWebsite:log_in")
