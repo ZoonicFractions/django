@@ -116,7 +116,7 @@ def log_out(request):
     return redirect('zoonicWebsite:log_in')
 
 def readUsers(request):
-    if request.user.is_authenticated:
+    if request.user.is_authenticated & request.user.is_staff:
         all_logs = User.objects.filter()
         context = {'users': list(all_logs)}
         return render(request, 'zoonicWebsite/readUsers.html', context)
@@ -124,7 +124,7 @@ def readUsers(request):
         return redirect("zoonicWebsite:log_in")
 
 def updateDeleteUser(request, username):
-    if request.user.is_authenticated:
+    if request.user.is_authenticated & request.user.is_staff:
         user = User.objects.filter(username = username)
         user = user[0]
         context = {'username': user.username, 'email': user.email, 
@@ -135,7 +135,7 @@ def updateDeleteUser(request, username):
         return redirect("zoonicWebsite:log_in")
 
 def createUser(request):
-    if request.user.is_authenticated:
+    if request.user.is_authenticated & request.user.is_staff:
         return render(request, 'zoonicWebsite/createUser.html')
     else:
         return redirect("zoonicWebsite:log_in")
