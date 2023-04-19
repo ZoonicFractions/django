@@ -65,58 +65,6 @@ class CreateUser(View):
         except Exception as inst:
             return JsonResponse({'status':"failure", "message" : inst.args[0]}) 
 
-# Validate User (log-in)
-class ValidateUser(View):
-    def get(self, request, mail, password):
-        # Checking that the input data is correct 
-        try:
-            # Checking the mail is valid.
-            # Regex for mail validation.
-            regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
-            if(not re.fullmatch(regex, mail)):
-                raise Exception('Invalid e-mail.')
-
-            # Checking that mail and password are valid.
-            # Looking for the User.
-            foundUser = Usuario.objects.get(mail = mail)
-
-            if(foundUser.password != password):
-                raise Exception('Either the mail or the password are not correct.')
-            
-            return JsonResponse({'status':"success"}) 
-
-        except Exception as inst:
-            return JsonResponse({'status':"failure", "message" : inst.args[0]}) 
-
-# View User (Administrador or Profesor)
-class ViewUser(View):
-    # Allowing everyone to use this POST request.
-    @csrf_exempt
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
-
-    def get(self, request, mail):
-        # Checking that the input data is correct 
-        try:
-            # Checking the mail is valid.
-            # Regex for mail validation.
-            regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
-            if(not re.fullmatch(regex, mail)):
-                raise Exception('Invalid e-mail.')
- 
-            # Looking for the User.
-            foundUser = Usuario.objects.get(mail = mail)
-
-            if(not foundUser):
-                raise Exception('E-mail not linked to any account.')
-
-            (mail, role, user_name) = (foundUser.mail, foundUser.role, foundUser.user_name)
-            
-            return JsonResponse({'status':"success", "information" : {"mail" : mail, "user_name" : user_name, "role" : role}}) 
-            
-        except Exception as inst:
-            return JsonResponse({'status':"failure", "message" : inst.args[0]})
-
 # Update User Data
 class UpdateUser(View):
     # Allowing everyone to use this POST request.

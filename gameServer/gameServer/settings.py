@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-s%tymcuz52*#xb906!o1#m^vs_ls-9skhnza53kt!s5*!kj^0='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -55,7 +55,25 @@ ROOT_URLCONF = 'gameServer.urls'
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:80',
     'http://localhost:8000',
-    'http://127.0.0.1:8000'
+    'http://127.0.0.1:8000',
+    'http://tec.fev.com.mx',
+    'https://tec.fev.com.mx',
+    'http://dev.tec.fev.com.mx',
+    'https://dev.tec.fev.com.mx',
+    'http://*.fev.com.mx',
+    'https://*.fev.com.mx'
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:80',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
+    'http://tec.fev.com.mx',
+    'https://tec.fev.com.mx',
+    'http://dev.tec.fev.com.mx',
+    'https://dev.tec.fev.com.mx',
+    'http://*.fev.com.mx',
+    'https://*.fev.com.mx'
 ]
 
 TEMPLATES = [
