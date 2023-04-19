@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 import re, json
 from datetime import datetime
+from zoonicWebsite.processing import get_level_participation
 
 # Creación de usuario (Administrador o Profesor)
 class CreateUser(View):
