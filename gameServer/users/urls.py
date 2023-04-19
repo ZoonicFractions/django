@@ -12,4 +12,3 @@ urlpatterns = [
     path('view-logs-student-chart/<int:difficulty>/<str:classroom>/<int:role_number>/<int:level>', views.ViewStudentLogsChart.as_view(), name = 'view-logs-student-chart'),
     path('level-participation-chart/<int:difficulty>/<str:classroom>', views.StudentPaticipation.as_view(), name = 'level-participation-chart'),
 ]
-
