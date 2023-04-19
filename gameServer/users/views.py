@@ -268,3 +268,55 @@ class ViewStudentLogsChart(View):
         
         except Exception as inst:
             return JsonResponse({'status':"failure", "message" : inst.args[0]})
+        
+# View Student Logs of a certain level 
+class ViewStudentLogsChart(View):
+    def get(self, request, difficulty, classroom, role_number, level):
+        # Checking that the input data is correct 
+        try:
+            # Filtering students.
+            foundStudents = list(Registro.objects.filter(
+                classroom = classroom,
+                role_number = role_number,
+                difficulty = difficulty,
+                level = level
+            ))
+
+            if (not foundStudents):
+                raise Exception ('Student not found')
+
+            # Pasing and storing the logs of the user
+            logs = {'date_list': [], 'grade_list':[]}
+            for log in foundStudents:
+                logs['date_list'].append(log.date.strftime("%d/%m/%Y : %H:%M:%S"))
+                logs['grade_list'].append(round(log.grade, 2))
+            
+            return JsonResponse({'status':"success", 'logs': logs}) 
+        
+        except Exception as inst:
+            return JsonResponse({'status':"failure", "message" : inst.args[0]})
+        
+# View Student Logs of a certain level 
+class StudentPaticipation(View):
+    def get(self, request, difficulty, classroom):
+        # Checking that the input data is correct 
+        try:
+            # Filtering students.
+            foundStudents = []
+            if(classroom == 'A' or classroom == 'B'):
+                foundStudents = Registro.objects.filter(
+                    classroom = classroom,
+                    difficulty = difficulty,
+                )
+            else:
+                foundStudents = Registro.objects.filter(
+                    classroom = classroom,
+                    difficulty = difficulty,
+                )
+
+            paticipation_list = get_level_participation(foundStudents)
+            
+            return JsonResponse({'status':"success", 'paticipation_list': paticipation_list}) 
+        
+        except Exception as inst:
+            return JsonResponse({'status':"failure", "message" : inst.args[0]})
