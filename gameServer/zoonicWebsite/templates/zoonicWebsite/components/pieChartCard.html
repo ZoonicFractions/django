@@ -1,0 +1,14 @@
+{% extends 'zoonicWebsite/components/levelCard.html' %}
+{% block level-card-title %}
+    <h3>
+        Alumnos por Nivel
+    </h3>
+{% endblock %}
+{% block level-card-content %}
+    <p id="info-paragraph">
+        Sin información disponible para generar la gráfica.
+    </p>
+    <div class="chart-area" id="div-chart">
+        <canvas id="myPieChart"></canvas>
+    </div>
+{% endblock %}
