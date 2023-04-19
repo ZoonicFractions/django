@@ -310,13 +310,12 @@ class StudentPaticipation(View):
                 )
             else:
                 foundStudents = Registro.objects.filter(
-                    classroom = classroom,
                     difficulty = difficulty,
                 )
 
-            paticipation_list = get_level_participation(foundStudents)
+            participation_list = get_level_participation(foundStudents)
             
-            return JsonResponse({'status':"success", 'paticipation_list': paticipation_list}) 
+            return JsonResponse({'status':"success", 'participation_list': participation_list}) 
         
         except Exception as inst:
             return JsonResponse({'status':"failure", "message" : inst.args[0]})

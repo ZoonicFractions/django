@@ -12,6 +12,8 @@ async function generateChart(){
     const response = await fetch(`/api/level-participation-chart/${difficulty}/${classroom}`);
 	const jsonData = await response.json();
 
+    console.log(jsonData)
+
     // Generating the chart    
     if(jsonData.participation_list[0] == 0 && jsonData.participation_list[1] == 0 && jsonData.participation_list[2] == 0){
         document.getElementById(`myPieChart`).remove();
