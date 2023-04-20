@@ -1,0 +1,110 @@
+@use '../globals/variables'
+header
+    // Centering inside elements
+    display: flex
+    align-items: center
+    justify-content: space-between
+    padding: 1rem
+
+    // Views
+    box-shadow: rgba(17, 12, 46, 0.1) 0px 0px 50px 0px
+
+    // Dimensions
+    width: inherit
+
+    // Position
+    top: 0
+    z-index: 100
+
+    @media (max-width: variables.$width-large)
+        align-contents: center
+
+        .user-wrapper
+            display: none
+
+        span
+            display: none
+
+        .card-single span
+            font-size: 1rem
+
+.brand-wrapper
+    color: variables.$main-color
+    font-size: 1.5rem
+
+.brand-wrapper a
+    color: variables.$main-color
+    
+.search-wrapper
+    // Centering Vertically everything inside
+    display: flex
+    align-items: center
+
+    // Views
+    border: 1px solid variables.$border-grey
+    height: 50px
+    border-radius: 15px
+    overflow-x: hidden
+
+    @media (max-width: variables.$width-large)
+        display: none
+
+.search-wrapper input
+    height: 100%
+    outline: none
+    border: none
+    padding: 0.5rem
+    width: 7.5rem
+
+.search-wrapper span
+    display: inline-block
+    padding: 0.5rem
+    font-size: 1.5rem
+
+.search-wrapper button
+    height: 100%
+    border: none
+
+.user-wrapper
+    display: flex
+    flex-wrap: row
+    align-items: center
+
+.user-wrapper img
+    // Views
+    border: 1px solid variables.$border-grey
+    border-radius: 50%
+    margin-right: 1rem
+
+    // Dimensions
+    height: 50px
+    width: 50px
+
+.user-wrapper span
+    // Display
+    display: flex
+    justify-content: center
+    align-items: center
+
+    // Dimensions
+    height: 50px
+    width: 50px
+    font-size: 2rem
+
+    // Views
+    background-color: variables.$main-color-active
+    color: variables.$text-white
+    border-radius: 50%
+    margin-left: 0.5rem
+
+.user-wrapper small
+    display: inline-block
+    color: variables.$text-grey
+
+header label
+    display: none
+    color: variables.$main-color
+    font-size: 1.5rem
+
+    @media (max-width: variables.$width-large)
+        display: inline

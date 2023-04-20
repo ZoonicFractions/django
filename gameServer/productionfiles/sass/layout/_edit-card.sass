@@ -1,0 +1,40 @@
+@use '../globals/variables'
+.edit-card
+    // Dimensions
+    height: 85%
+    width: 70%
+    margin: auto
+
+    // Views
+    background-color: variables.$text-white
+    padding: 1rem
+    border-radius: 10px
+
+    // Display
+    display: flex
+    flex-direction: column
+    justify-content: space-evenly
+
+.edit-card input[type=text],
+.edit-card input[type=password],
+.edit-card input[type=email]
+    // Dimensions
+    width: 100%
+    height: 2rem
+
+    // Views
+    border: 1px solid variables.$border-grey
+    border-radius: 10px
+    padding: 0 0.5rem
+    color: variables.$text-grey
+
+.user-form-buttons
+    // Display
+    display: flex
+    justify-content: space-around
+
+.user-form-buttons button
+    // Views
+    border: none
+    border-radius: 10px
+    padding: 0.5rem

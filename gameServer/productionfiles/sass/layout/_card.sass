@@ -1,0 +1,36 @@
+@use '../globals/variables'
+
+.card-single
+    border-radius: 10px
+    background-color: variables.$main-color
+
+.card-content
+    // Display
+    display: flex
+    justify-content: space-between
+
+    // Dimensions
+    width: 97%
+    height: 100%
+
+    // View
+    background-color: variables.$text-white
+    padding: 1rem
+    border-radius: inherit
+
+.card-content span
+    display: inline-block
+    font-size: 1.5rem
+    color: variables.$main-color
+
+.card-content div:first-child
+    width: 100%
+
+.card-content-data
+    display: flex
+    flex-direction: col
+    align-items: center
+
+.card-content-data .progress-bar
+    margin: 0 0 0 0.5rem
+

@@ -1,0 +1,19 @@
+@use '../globals/_variables'
+div[class^="progress-bar"]
+    // Dimensions
+    height: 20px
+    width: 100%
+    margin: 1rem 0 0.5rem 0
+
+    // Views
+    background-color: variables.$border-grey
+    background-size: 200%
+    border-radius: 25px
+
+.progress-bar-header
+    // Display
+    display: flex
+    justify-content: space-between
+
+.progress-bar-header .grade
+    font-weight: 700

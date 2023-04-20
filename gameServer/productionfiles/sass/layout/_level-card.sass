@@ -1,0 +1,46 @@
+@use '../globals/variables'
+.level-card
+    // Views
+    background-color: variables.$text-white
+    padding: 1rem
+    border-radius: 10px
+
+    // Dimensions
+    margin: 2rem 0
+
+.level-card hr
+    margin: 0.5rem 0
+    color: variables.$border-grey
+    
+.level-card h3
+    color: variables.$main-color
+
+.level-card .user-row
+    // Display
+    display: grid
+    grid-template-columns: repeat(6, 1fr)
+
+    // Font size
+    font-size: 0.75rem
+    
+    // Dimensions
+    margin-bottom: 0.5rem
+
+.level-card .user-row span
+    // Display
+    display: flex
+    justify-content: left
+    align-items: center
+
+    overflow: hidden
+
+#user-row-header
+    font-weight: 700
+
+.level-card .user-row a
+    padding: 0.5rem
+    border-radius: 10px
+    width: 100%
+
+    background-color: variables.$main-color
+    color: variables.$text-white

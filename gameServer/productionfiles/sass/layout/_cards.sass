@@ -1,0 +1,15 @@
+@use '../globals/variables'
+.cards
+    display: grid
+    grid-template-columns: repeat(4, 1fr)
+    grid-gap: 1.5em
+    
+    width: 100%
+
+    @media (max-width: variables.$width-xlarge)
+        grid-template-columns: repeat(2, 1fr)
+        grid-template-rows: repeat(2, 1fr)
+    
+    @media (max-width: variables.$width-large)
+        grid-template-columns: repeat(1, 1fr)
+        grid-template-rows: repeat(4, 1fr)
