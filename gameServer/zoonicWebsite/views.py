@@ -7,7 +7,6 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_protect
 
-
 # -- DASHBOARD
 def index(request):
     if request.user.is_authenticated:
@@ -43,7 +42,7 @@ def dashboard(request, difficulty, classroom, role_number):
     if request.user.is_authenticated:
         # Calling the Api
         
-        response = requests.get(f'http://localhost:8000/api/view-logs-student/{difficulty}/{classroom}/{role_number}')
+        response = requests.get(f'http://localhost:80/api/view-logs-student/{difficulty}/{classroom}/{role_number}')
         response = response.json()  
         logs = response['logs']
         context = {'total_logs':0, 'last_level':0, 'best_grade':0, 'best_time':0,

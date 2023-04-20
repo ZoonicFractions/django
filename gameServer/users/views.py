@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 import re, json
 from datetime import datetime
+from zoonicWebsite.processing import get_level_participation
 
 # Creación de usuario (Administrador o Profesor)
 class CreateUser(View):
@@ -64,58 +65,6 @@ class CreateUser(View):
 
         except Exception as inst:
             return JsonResponse({'status':"failure", "message" : inst.args[0]}) 
-
-# Validate User (log-in)
-class ValidateUser(View):
-    def get(self, request, mail, password):
-        # Checking that the input data is correct 
-        try:
-            # Checking the mail is valid.
-            # Regex for mail validation.
-            regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
-            if(not re.fullmatch(regex, mail)):
-                raise Exception('Invalid e-mail.')
-
-            # Checking that mail and password are valid.
-            # Looking for the User.
-            foundUser = Usuario.objects.get(mail = mail)
-
-            if(foundUser.password != password):
-                raise Exception('Either the mail or the password are not correct.')
-            
-            return JsonResponse({'status':"success"}) 
-
-        except Exception as inst:
-            return JsonResponse({'status':"failure", "message" : inst.args[0]}) 
-
-# View User (Administrador or Profesor)
-class ViewUser(View):
-    # Allowing everyone to use this POST request.
-    @csrf_exempt
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
-
-    def get(self, request, mail):
-        # Checking that the input data is correct 
-        try:
-            # Checking the mail is valid.
-            # Regex for mail validation.
-            regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
-            if(not re.fullmatch(regex, mail)):
-                raise Exception('Invalid e-mail.')
- 
-            # Looking for the User.
-            foundUser = Usuario.objects.get(mail = mail)
-
-            if(not foundUser):
-                raise Exception('E-mail not linked to any account.')
-
-            (mail, role, user_name) = (foundUser.mail, foundUser.role, foundUser.user_name)
-            
-            return JsonResponse({'status':"success", "information" : {"mail" : mail, "user_name" : user_name, "role" : role}}) 
-            
-        except Exception as inst:
-            return JsonResponse({'status':"failure", "message" : inst.args[0]})
 
 # Update User Data
 class UpdateUser(View):
@@ -316,6 +265,57 @@ class ViewStudentLogsChart(View):
                 logs['grade_list'].append(round(log.grade, 2))
             
             return JsonResponse({'status':"success", 'logs': logs}) 
+        
+        except Exception as inst:
+            return JsonResponse({'status':"failure", "message" : inst.args[0]})
+        
+# View Student Logs of a certain level 
+class ViewStudentLogsChart(View):
+    def get(self, request, difficulty, classroom, role_number, level):
+        # Checking that the input data is correct 
+        try:
+            # Filtering students.
+            foundStudents = list(Registro.objects.filter(
+                classroom = classroom,
+                role_number = role_number,
+                difficulty = difficulty,
+                level = level
+            ))
+
+            if (not foundStudents):
+                raise Exception ('Student not found')
+
+            # Pasing and storing the logs of the user
+            logs = {'date_list': [], 'grade_list':[]}
+            for log in foundStudents:
+                logs['date_list'].append(log.date.strftime("%d/%m/%Y : %H:%M:%S"))
+                logs['grade_list'].append(round(log.grade, 2))
+            
+            return JsonResponse({'status':"success", 'logs': logs}) 
+        
+        except Exception as inst:
+            return JsonResponse({'status':"failure", "message" : inst.args[0]})
+        
+# View Student Logs of a certain level 
+class StudentPaticipation(View):
+    def get(self, request, difficulty, classroom):
+        # Checking that the input data is correct 
+        try:
+            # Filtering students.
+            foundStudents = []
+            if(classroom == 'A' or classroom == 'B'):
+                foundStudents = Registro.objects.filter(
+                    classroom = classroom,
+                    difficulty = difficulty,
+                )
+            else:
+                foundStudents = Registro.objects.filter(
+                    difficulty = difficulty,
+                )
+
+            participation_list = get_level_participation(foundStudents)
+            
+            return JsonResponse({'status':"success", 'participation_list': participation_list}) 
         
         except Exception as inst:
             return JsonResponse({'status':"failure", "message" : inst.args[0]})

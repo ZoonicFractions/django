@@ -19,3 +19,20 @@ def get_average(query_set, difficulty, classroom = 'General'):
             '2':{'grade': round(avergae_grade[1], 2), 'time': round(average_time[1], 2)},
             '3':{'grade': round(avergae_grade[2], 2), 'time': round(average_time[2], 2)}}, 
             'difficulty': difficulty, 'classroom': classroom}
+
+def get_level_participation(query_set):
+    user_level = {}
+    participation = [0, 0, 0]
+
+    for log in query_set:
+        key = log.classroom + str(log.role_number)
+        if( key not in user_level ):
+            user_level[key] = log.level
+        else:
+            if(user_level[key] < log.level):
+                user_level[key] = log.level
+
+    for key in user_level :
+        participation[user_level[key] - 1] += 1
+
+    return participation

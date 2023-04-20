@@ -55,7 +55,25 @@ ROOT_URLCONF = 'gameServer.urls'
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:80',
     'http://localhost:8000',
-    'http://127.0.0.1:8000'
+    'http://127.0.0.1:8000',
+    'http://tec.fev.com.mx',
+    'https://tec.fev.com.mx',
+    'http://dev.tec.fev.com.mx',
+    'https://dev.tec.fev.com.mx',
+    'http://*.fev.com.mx',
+    'https://*.fev.com.mx'
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:80',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
+    'http://tec.fev.com.mx',
+    'https://tec.fev.com.mx',
+    'http://dev.tec.fev.com.mx',
+    'https://dev.tec.fev.com.mx',
+    'http://*.fev.com.mx',
+    'https://*.fev.com.mx'
 ]
 
 TEMPLATES = [
