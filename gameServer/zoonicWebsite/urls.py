@@ -15,4 +15,5 @@ urlpatterns = [
     path('read', views.readUsers, name = 'read'),
     path('updateDelete/<str:username>/', views.updateDeleteUser, name = 'updateDelete'),
     path('create', views.createUser, name = 'create'),
+    path('resetPassword', views.resetPassword, name="resetPassword"),
 ]

@@ -139,3 +139,9 @@ def createUser(request):
         return render(request, 'zoonicWebsite/createUser.html')
     else:
         return redirect("zoonicWebsite:log_in")
+    
+# For reset password via email
+def resetPassword(request):
+    if (request.method == "POST"):
+        pass
+    return render(request, template_name="zoonicWebsite/resetPassword.html")
