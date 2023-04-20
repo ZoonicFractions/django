@@ -15,5 +15,9 @@ urlpatterns = [
     path('read', views.readUsers, name = 'read'),
     path('updateDelete/<str:username>/', views.updateDeleteUser, name = 'updateDelete'),
     path('create', views.createUser, name = 'create'),
+<<<<<<< HEAD
     path('resetPassword', views.resetPassword, name="resetPassword"),
+=======
+    path('download', views.download, name = 'download'),
+>>>>>>> 2078620 (adding time vs date chart.)
 ]

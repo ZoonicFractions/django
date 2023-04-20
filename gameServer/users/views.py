@@ -286,10 +286,11 @@ class ViewStudentLogsChart(View):
                 raise Exception ('Student not found')
 
             # Pasing and storing the logs of the user
-            logs = {'date_list': [], 'grade_list':[]}
+            logs = {'date_list': [], 'grade_list':[], 'time_list': []}
             for log in foundStudents:
                 logs['date_list'].append(log.date.strftime("%d/%m/%Y : %H:%M:%S"))
                 logs['grade_list'].append(round(log.grade, 2))
+                logs['time_list'].append(round(log.time, 2))
             
             return JsonResponse({'status':"success", 'logs': logs}) 
         

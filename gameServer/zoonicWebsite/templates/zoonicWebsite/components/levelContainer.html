@@ -21,8 +21,17 @@
             </p>
             <div class="progress-bar {{iteration.grade}}"></div>
         {% endfor %}
-        <div class="chart-area" id="div-chart-{{key}}">
-            <canvas id="myAreaChart-{{key}}"></canvas>
+        <h4 class="chart-header {{key}}">
+            Gráfica de Caificación vs. Fecha
+        </h4>
+        <div class="chart-area {{key}}" id="div-chart-grade-{{key}}">
+            <canvas id="myAreaChart-grade-{{key}}"></canvas>
+        </div>
+        <h4 class="chart-header {{key}}">
+            Gráfica de Tiempo vs. Fecha
+        </h4>
+        <div class="chart-area {{key}}" id="div-chart-{{key}}">
+            <canvas id="myAreaChart-time-{{key}}"></canvas>
         </div>
     {% else %}
         <p>Sin información disponible de este nivel.</p>

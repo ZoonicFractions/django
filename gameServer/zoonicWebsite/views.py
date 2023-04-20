@@ -42,7 +42,7 @@ def dashboard(request, difficulty, classroom, role_number):
     if request.user.is_authenticated:
         # Calling the Api
         
-        response = requests.get(f'http://localhost:80/api/view-logs-student/{difficulty}/{classroom}/{role_number}')
+        response = requests.get(f'http://localhost:8000/api/view-logs-student/{difficulty}/{classroom}/{role_number}')
         response = response.json()  
         logs = response['logs']
         context = {'total_logs':0, 'last_level':0, 'best_grade':0, 'best_time':0,
@@ -138,9 +138,15 @@ def createUser(request):
         return render(request, 'zoonicWebsite/createUser.html')
     else:
         return redirect("zoonicWebsite:log_in")
+<<<<<<< HEAD
     
 # For reset password via email
 def resetPassword(request):
     if (request.method == "POST"):
         pass
     return render(request, template_name="zoonicWebsite/resetPassword.html")
+=======
+
+def download(request):
+    return render(request, 'zoonicWebsite/download.html')
+>>>>>>> 2078620 (adding time vs date chart.)

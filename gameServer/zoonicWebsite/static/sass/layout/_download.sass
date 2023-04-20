@@ -1,0 +1,62 @@
+@use '../globals/variables'
+.download-background
+    // Dimensions
+    height: inherit
+    width: inherit
+
+    // Views
+    background-color: variables.$background-grey
+
+    // Display
+    display: flex
+    justify-content: center
+    align-items: center
+
+.download-container
+    // Dimensions
+    height: 70%
+    width: 70%
+
+    // Views
+    background-color: variables.$main-color
+    border-radius: 10px
+    box-shadow: 44px 56px 319px -41px rgba(0,0,0,0.65)
+    -webkit-box-shadow: 44px 56px 319px -41px rgba(0,0,0,0.65)
+    -moz-box-shadow: 44px 56px 319px -41px rgba(0,0,0,0.65)
+
+    // Display
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+
+.download-container a
+    color: variables.$text-white
+    font-weight: bold
+    font-size: 2rem
+    margin-bottom: 1.5rem
+
+.download-buttons
+    display: flex
+    justify-content: space-evenly
+
+    @media (max-width: variables.$width-large)
+        flex-direction: column
+        .download-button
+            width: 8rem
+
+    // Dimensions
+    width: auto
+
+.download-button
+    // Views
+    border: none
+    background-color: variables.$text-white
+    color: variables.$color-dark
+    font-weight: 500
+    border-radius: 10px
+
+    // Dimensions
+    width: 10rem
+    padding: 1rem 0.5rem
+    margin: 2rem

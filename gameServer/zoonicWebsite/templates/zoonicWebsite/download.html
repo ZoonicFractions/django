@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% include 'zoonicWebsite/components/head.html' %}
+<body>
+    <div class="download-background">
+        <div class="download-container">
+            <a href="{% url 'zoonicWebsite:log_in' %}">
+                <span class="las la-paw"></span><span> Zoonic</span>
+            </a>
+            <div class="download-buttons">
+                <button class="download-button"><span class="lab la-windows"></span> Windows</button>
+                <button class="download-button"><span class="lab la-apple"></span> Mac</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

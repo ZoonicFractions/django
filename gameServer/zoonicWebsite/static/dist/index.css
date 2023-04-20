@@ -412,6 +412,7 @@ footer span {
 
 .chart-area {
   height: 300px;
+  margin-bottom: 1rem;
 }
 
 .login-background {
@@ -561,4 +562,59 @@ footer span {
   border: none;
   border-radius: 10px;
   padding: 0.5rem;
+}
+
+.download-background {
+  height: inherit;
+  width: inherit;
+  background-color: #F1F5F9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.download-container {
+  height: 70%;
+  width: 70%;
+  background-color: #dd2f6e;
+  border-radius: 10px;
+  box-shadow: 44px 56px 319px -41px rgba(0, 0, 0, 0.65);
+  -webkit-box-shadow: 44px 56px 319px -41px rgba(0, 0, 0, 0.65);
+  -moz-box-shadow: 44px 56px 319px -41px rgba(0, 0, 0, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.download-container a {
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.download-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  width: auto;
+}
+@media (max-width: 820px) {
+  .download-buttons {
+    flex-direction: column;
+  }
+  .download-buttons .download-button {
+    width: 8rem;
+  }
+}
+
+.download-button {
+  border: none;
+  background-color: white;
+  color: #1d2231;
+  font-weight: 500;
+  border-radius: 10px;
+  width: 10rem;
+  padding: 1rem 0.5rem;
+  margin: 2rem;
 }/*# sourceMappingURL=index.css.map */
