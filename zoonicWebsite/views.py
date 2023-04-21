@@ -148,9 +148,8 @@ def createUser(request):
 
 # For reset password via email
 def resetPassword(request):
-    if (request.method == "POST"):
-        pass
-    return render(request, template_name="zoonicWebsite/resetPassword.html")
+    if request.method == "GET":
+        return render(request, template_name="zoonicWebsite/resetPassword.html")
 
 def download(request):
     return render(request, 'zoonicWebsite/download.html')
@@ -168,7 +167,6 @@ def resetPasswordDone(request):
             r.generate_token()
             filepath = os.path.join(pathlib.Path(__file__).parent.resolve(), "recoverMail.txt")
             message = ""
-            print(mail)
             with open(filepath) as email:
                 myFile = File(email)
                 message = myFile.read()
@@ -206,7 +204,7 @@ def resetSuccess(request, token):
     r = Recovers.objects.filter(token=token)
     if(r.exists() and request.method == "POST"):
         u = User.objects.get(username=r.first().username)
-        u.password = request.POST["password"]
+        u.set_password(request.POST["password"])
         u.save()
         r.delete()
         return render(request, "zoonicWebsite/resetSuccess.html")
