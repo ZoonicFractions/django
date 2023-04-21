@@ -11,6 +11,8 @@ import os, pathlib
 from django.core.files import File
 # Email modules
 from django.core.mail import send_mail
+# Access env
+from dotenv import load_dotenv
 
 # -- DASHBOARD
 def index(request):
@@ -176,8 +178,10 @@ def resetPasswordDone(request):
             if(Recovers.objects.filter(pk=r.username).exists()):
                 Recovers.objects.get(pk=r.username).delete()
             r.save()
+            # TODO check if dotenv retrieves the email
+            load_dotenv(os.path.join(pathlib.Path(__file__).parent.parent.resolve(), ".env"))
             send_mail(f'Recover text for {context["username"]}',
-                    message, "emirandas1003@gmail.com",
+                    message, os.getenv('EMAIL_HOST'),
                     [mail], 
                     fail_silently=False)
         return render(request, "zoonicWebsite/resetPasswordDone.html", context)
