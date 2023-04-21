@@ -185,6 +185,7 @@ def resetPasswordDone(request):
         return redirect(request, template_name="zoonicWebsite:log_in")
 
 # Reset password
+# TODO consider cypher user with uuid
 def reset(request, uid, token):
     context = {'valid': False, 'token': token}
     if(request.method=="GET"):
