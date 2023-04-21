@@ -7,8 +7,8 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_protect
 from .models import Recovers
-# To send recover email
-import smtplib
+import os, pathlib
+from django.core.files import File
 # Email modules
 from django.core.mail import send_mail
 
