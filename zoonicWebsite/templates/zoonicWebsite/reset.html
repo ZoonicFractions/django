@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    {% include 'zoonicWebsite/components/head.html'%}
+    <body>
+        <script>
+          
+            // Function to check Whether both passwords
+            // is same or not.
+            function checkPassword(form) {
+                password1 = form.password1.value;
+                password2 = form.password2.value;
+  
+                // If password not entered
+                if (password1 == '')
+                    alert ("Please enter Password");
+                      
+                // If confirm password not entered
+                else if (password2 == '')
+                    alert ("Please enter confirm password");
+                      
+                // If Not same return False.    
+                else if (password1 != password2) {
+                    alert ("\nPassword did not match: Please try again...")
+                    return false;
+                }
+  
+                // If same return True.
+                else{
+                    alert("Password Match: Welcome to GeeksforGeeks!")
+                    return true;
+                }
+            }
+        </script>
+        <div class="login-background">
+            <div class="login-container">
+                {% if valid %}
+                <a href="{% url 'zoonicWebsite:general' 1 %}">
+                    <span class="las la-paw"></span><span> Zoonic</span>
+                </a>
+                <h1>Reset Password</h1>
+                <br>
+                <form onSubmit = "return checkPassword(this)" action="{% url 'zoonicWebsite:resetSuccess' token %}" method="POST">
+                    {% csrf_token %}
+                    <input type="password" id="password" placeholder="Password" name="password">
+                    <input type="password" id="confirmPassword" placeholder="Confirm password" name="confirmPassword">
+                    <input type="submit" value="Confirm">
+                </form>
+                {% else %}
+                <p>Invalid credentials to recover password. <br> Remember that the limit time is one day.</p>
+                {% endif %}
+            </div>
+        </div>
+    </body>
+<html>

@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    {% include 'zoonicWebsite/components/head.html'%}
+    <body>
+        <div class="login-background">
+            <div class="login-container">
+                <h1>Reset success</h1>
+                <p>Please return to login</p>
+                <a href="{% url 'zoonicWebsite:general' 1 %}">
+                    <span class="las la-paw"></span><span> Zoonic</span>
+                </a>
+            </div>
+        </div>
+    </body>
+<html>

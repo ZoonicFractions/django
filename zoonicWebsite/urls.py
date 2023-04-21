@@ -17,4 +17,7 @@ urlpatterns = [
     path('create', views.createUser, name = 'create'),
     path('resetPassword', views.resetPassword, name="resetPassword"),
     path('download', views.download, name = 'download'),
+    path('resetPasswordDone', views.resetPasswordDone, name="resetPasswordDone"),
+    path('reset/<str:uid>/<str:token>', views.reset, name="reset"),
+    path('resetSuccess/<str:token>', views.resetSuccess, name = "resetSuccess"),
 ]
