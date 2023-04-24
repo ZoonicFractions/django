@@ -176,7 +176,6 @@ def resetPasswordDone(request):
             if(Recovers.objects.filter(pk=r.username).exists()):
                 Recovers.objects.get(pk=r.username).delete()
             r.save()
-            # TODO check if dotenv retrieves the email
             load_dotenv(os.path.join(pathlib.Path(__file__).parent.parent.resolve(), ".env"))
             send_mail(f'Recover text for {context["username"]}',
                     message, os.getenv('EMAIL_HOST'),
