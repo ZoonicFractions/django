@@ -37,7 +37,7 @@
                 <a href="{% url 'zoonicWebsite:general' 1 %}">
                     <span class="las la-paw"></span><span> Zoonic</span>
                 </a>
-                <h1>Reset Password</h1>
+                <h1 style="color: white;">Reset Password</h1>
                 <br>
                 <form onsubmit = "return checkPassword(this)" action="{% url 'zoonicWebsite:resetSuccess' token %}" method="POST">
                     {% csrf_token %}
@@ -46,8 +46,8 @@
                     <input type="submit" value="Confirm">
                 </form>
                 {% else %}
-                <p>Invalid credentials to recover password. <br> Remember that the limit time is one day.</p>
-                <p><a href="{% url 'zoonicWebsite:log_in' %}">Go to login</a></p>
+                <p style="color: white;">Invalid credentials to recover password. <br> Remember that the limit time is one day.</p>
+                <p style="color: white;"><a href="{% url 'zoonicWebsite:log_in' %}">Go to login</a></p>
                 {% endif %}
             </div>
         </div>
