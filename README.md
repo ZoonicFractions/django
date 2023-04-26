@@ -32,5 +32,4 @@ usted acepta los términos y condiciones del EULA.
 
 ## Licencia
 
-Por favor, lea el Contrato de Licencia de Usuario Final (EULA) incluido en este repositorio antes de utilizar el software. Al utilizar el software,
-usted acepta los términos y condiciones del EULA.
+Este proyecto se distribuye bajo la [Licencia MIT modificada de Zoonic Company](https://github.com/tc2005B-202311/gd1_441/blob/main/LICENSE). Por favor, lea el archivo LICENSE.md para obtener más información.
