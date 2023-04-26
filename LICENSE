@@ -1,53 +1,21 @@
-Licencia MIT modificada de la empresa Zoonic para el uso del software Zoonic
+MIT License
 
-Derechos de autor (c) 2023 Zoonic
+Copyright (c) 2023 Zoonic
 
-Se concede permiso, de forma gratuita, a cualquier persona que obtenga una copia
-de este software y los archivos de documentación asociados (el "Software"), para
-utilizar el Software con el único propósito de fines educativos y personales.
-Se prohíbe cualquier uso comercial o lucrativo del software sin la autorización
-previa y por escrito de [nombre de la compañía].
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-Bajo esta licencia, usted no tiene derecho a modificar, combinar, distribuir, 
-sublicenciar o vender copias del Software o cualquier parte del mismo sin el 
-consentimiento previo y por escrito de [nombre de la compañía].
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-El software se proporciona "tal cual", sin garantía de ningún tipo, expresa o 
-implícita, incluyendo, pero no limitado a, las garantías de comerciabilidad, 
-aptitud para un propósito particular y no infracción. En ningún caso los autores 
-o titulares de derechos de autor serán responsables de cualquier reclamo, daño o 
-cualquier otra responsabilidad, ya sea en una acción de contrato, agravio o 
-cualquier otra forma, que surja de, fuera de o en relación con el software o el 
-uso u otros tratos en el software.
-
-Por la presente, se otorga permiso a cualquier persona que obtenga una copia de 
-este software y los archivos de documentación asociados (el "Software") para 
-utilizar el Software con el único propósito de fines educativos y personales, 
-sujetos a las condiciones de esta Licencia MIT modificada.
-
------------------------------------------------------------------------------------
-
-Zoonic Company Modified MIT License for Zoonic Software
-
-Copyright (c) 2023 Zoonic Company
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to use the 
-Software solely for educational and personal purposes. Any commercial or for-profit 
-use of the software is prohibited without prior written consent from Zoonic Company.
-
-Under this license, you are not allowed to modify, merge, distribute, sublicense, or 
-sell copies of the Software or any part of it without prior written permission from 
-Zoonic Company.
-
-The software is provided "as is", without warranty of any kind, express or implied, 
-including but not limited to the warranties of merchantability, fitness for a 
-particular purpose and noninfringement. In no event shall the authors or copyright 
-holders be liable for any claim, damages or other liability, whether in an action of 
-contract, tort or otherwise, arising from, out of or in connection with the software 
-or the use or other dealings in the software.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this 
-software and associated documentation files (the "Software"), to use the Software solely 
-for educational and personal purposes, subject to the conditions of this Zoonic Company 
-Modified MIT License.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
