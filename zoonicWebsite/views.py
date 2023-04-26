@@ -5,14 +5,12 @@ import requests
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.views.decorators.csrf import csrf_protect
-from .models import Recovers
-import os, pathlib
-from django.core.files import File
 # Email modules
 from django.core.mail import send_mail
 # Access env
 from dotenv import load_dotenv
+# Forms
+from . import forms
 
 # -- DASHBOARD
 def index(request):
@@ -146,65 +144,5 @@ def createUser(request):
     else:
         return redirect("zoonicWebsite:log_in")
 
-# For reset password via email
-def resetPassword(request):
-    if request.method == "GET":
-        return render(request, template_name="zoonicWebsite/resetPassword.html")
-
 def download(request):
     return render(request, 'zoonicWebsite/download.html')
-
-# When reset is sent
-def resetPasswordDone(request):
-    if (request.method == "POST"):
-        context = {'username': ''}
-        u = User.objects.filter(email=request.POST["email"]) 
-        if(u.exists()):
-            r = Recovers()
-            mail = request.POST["email"]
-            context['username'] = u.first().username
-            r.username = context['username']
-            r.generate_token()
-            filepath = os.path.join(pathlib.Path(__file__).parent.resolve(), "recoverMail.txt")
-            message = ""
-            with open(filepath) as email:
-                myFile = File(email)
-                message = myFile.read()
-                message = message.replace('email%', mail)
-                message = message.replace('link%', f'https://tec.fev.com.mx/reset/{context["username"]}/{r.token}')
-            myFile.close()
-            if(Recovers.objects.filter(pk=r.username).exists()):
-                Recovers.objects.get(pk=r.username).delete()
-            r.save()
-            load_dotenv(os.path.join(pathlib.Path(__file__).parent.parent.resolve(), ".env"))
-            send_mail(f'Recover text for {context["username"]}',
-                    message, os.getenv('EMAIL_HOST'),
-                    [mail], 
-                    fail_silently=False)
-        return render(request, "zoonicWebsite/resetPasswordDone.html", context)
-    else: 
-        return redirect(request, template_name="zoonicWebsite:log_in")
-
-# Reset password
-# TODO consider cypher user with uuid
-def reset(request, uid, token):
-    context = {'valid': False, 'token': token}
-    if(request.method=="GET"):
-        r = Recovers.objects.filter(pk=uid)
-        if(r.exists()):
-            if(r.first().time_elapsed().days <= 1):
-                context['valid'] = True
-            else:
-                r.delete()
-
-    return render(request, "zoonicWebsite/reset.html", context)
-
-def resetSuccess(request, token):
-    r = Recovers.objects.filter(token=token)
-    if(r.exists() and request.method == "POST"):
-        u = User.objects.get(username=r.first().username)
-        u.set_password(request.POST["password"])
-        u.save()
-        r.delete()
-        return render(request, "zoonicWebsite/resetSuccess.html")
-    redirect(request, template_name="zoonicWebsite:log_in")
