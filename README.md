@@ -4,11 +4,10 @@ Este es el repositorio oficial para el proyecto Zoonic. Este proyecto es un vide
 
 ## Instalación
 
-Para instalar el software, por favor siga las siguientes instrucciones:
+Para instalar el videojuego, por favor siga las siguientes instrucciones:
 
-- Clonar el repositorio desde GitHub
-- Ejecutar [comando para instalar dependencias] para instalar las dependencias necesarias
-- [Agregar cualquier otra instrucción necesaria para la instalación]
+- Ingresar al sitio web para descargar el instalador. [Descargar](https://tec.fev.com.mx/download)
+- Seleccionar el sistema operativo para descargar e instalar el videojuego.
 
 ## Uso
 
