@@ -7,10 +7,12 @@
         Usuarios
     </h1>
     {% include 'zoonicWebsite/components/crudCard.html' %}
-    <button onclick="location.href='{% url 'zoonicWebsite:general' 1 %}'" class="dashboard-button">
-        Ir al Dashboard
-    </button>
-    <button onclick="location.href='{% url 'zoonicWebsite:create' %}'" class="dashboard-button">
-        Crear Usuario
-    </button>
+    <div class="buttons-read">
+        <button onclick="location.href='{% url 'zoonicWebsite:general' 1 %}'" class="dashboard-button">
+            Ir al Dashboard
+        </button>
+        <button onclick="location.href='{% url 'zoonicWebsite:create' %}'" class="dashboard-button">
+            Crear Usuario
+        </button>
+    </div>
 {% endblock %}

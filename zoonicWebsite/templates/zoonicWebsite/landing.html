@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% include 'zoonicWebsite/components/head.html' %}
+<body>
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Navbar -->
+        <header class="landing-header">
+            <a href="{% url 'zoonicWebsite:log_in' %}" class="brand">
+                <h2>
+                    <span class="las la-paw"></span> Zoonic
+                </h2>
+            </a>
+
+            <div class="links-wrapper">
+                <a href="{% url 'zoonicWebsite:log_in' %}">
+                    Log In
+                </a>
+                <a href="landing#minigames">
+                    Minigames
+                </a>
+                <a href="landing#download">
+                    Download
+                </a>
+            </div>
+        </header>
+        <main class="landing-main">
+            <!-- Cinematic Container-->
+            <div class="video-cinematic">
+                <video  autoplay muted loop id="vid">
+                    <source src="{% static 'img/gameCinematic.mp4' %}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+
+                <!-- Video Overlay -->
+                <div class="video-overlay">
+                    <h2><span class="las la-paw"></span> Zoonic</h2>
+                </div>
+            </div>
+            
+            <!-- Minigame Card Container -->
+            <div class="card-conatiner" id="minigames">
+                <!-- Container's Title -->
+                <h2>
+                    Minigames
+                </h2>
+
+                <!-- Container's Cards -->
+                <div class="minigame-card-left hidden">
+                    <div class="minigame-card-himg">
+                        <h3>
+                            Title
+                        </h3>
+                        <img src="{% static 'img/beer.jpeg' %}" alt="card-image">
+                    </div>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ratione quisquam adipisci ducimus est aspernatur. Velit iure, adipisci ab ducimus quisquam minima corporis, aspernatur voluptates itaque est rerum molestiae quidem!
+                    </p>
+                </div>
+                <div class="minigame-card-right hidden">
+                    <div class="minigame-card-himg">
+                        <h3>
+                            Title
+                        </h3>
+                        <img src="{% static 'img/beer.jpeg' %}" alt="card-image">
+                    </div>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ratione quisquam adipisci ducimus est aspernatur. Velit iure, adipisci ab ducimus quisquam minima corporis, aspernatur voluptates itaque est rerum molestiae quidem!
+                    </p>
+                </div>
+                <div class="minigame-card-left hidden">
+                    <div class="minigame-card-himg">
+                        <h3>
+                            Title
+                        </h3>
+                        <img src="{% static 'img/beer.jpeg' %}" alt="card-image">
+                    </div>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ratione quisquam adipisci ducimus est aspernatur. Velit iure, adipisci ab ducimus quisquam minima corporis, aspernatur voluptates itaque est rerum molestiae quidem!
+                    </p>
+                </div>
+                <div class="minigame-card-right hidden">
+                    <div class="minigame-card-himg">
+                        <h3>
+                            Title
+                        </h3>
+                        <img src="{% static 'img/beer.jpeg' %}" alt="card-image">
+                    </div>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro ratione quisquam adipisci ducimus est aspernatur. Velit iure, adipisci ab ducimus quisquam minima corporis, aspernatur voluptates itaque est rerum molestiae quidem!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Dowloadables Container -->
+            <div class="downloadables-container" id="download">
+                <!-- Container's Title -->
+                <h2>
+                    Download
+                </h2>
+                <div class="dowloadables-card">
+                    <a href="#"><span class="lab la-windows"></span> Windows </a>
+                    <a href="#"><span class="lab la-apple"></span> Mac </a>
+                </div>
+            </div>
+        </main>
+        
+        {% include 'zoonicWebsite/components/footer.html' %}
+    </div>
+
+    <script type="text/javascript" src="{% static 'js/scrollAnimation.js' %}"></script>
+</body>
+</html>

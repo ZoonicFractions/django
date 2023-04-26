@@ -73,7 +73,6 @@ class UpdateUser(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
     
-    #{pk, username, email, first_name, last_name, is_staff}
     def put(self, request):
         # Decoding the payload
         body = request.body.decode('utf-8')

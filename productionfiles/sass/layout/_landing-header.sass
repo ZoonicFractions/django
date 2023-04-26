@@ -1,0 +1,33 @@
+@use '../globals/variables'
+.landing-header
+    // Display
+    align-self: flex-start
+    position: sticky
+
+    // Views
+    background-color: variables.$main-color
+
+    @media (max-width: variables.$width-large)
+        flex-direction: column
+
+.landing-header a
+    color: variables.$text-white
+
+.landing-header .brand
+    font-size: 1.5rem
+
+.landing-header .links-wrapper
+    display: flex
+    @media (max-width: variables.$width-medium)
+        flex-direction: column
+
+.landing-header .links-wrapper a
+    color: variables.$text-white
+    @media (max-width: variables.$width-medium)
+        text-align: center
+
+.landing-header .links-wrapper a:not(:last-child)
+    margin-right: 1rem
+
+    @media (max-width: variables.$width-medium)
+        margin-right: 0

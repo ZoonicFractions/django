@@ -11,13 +11,13 @@ urlpatterns = [
     path('A-dif/<int:difficulty>', views.classroomA, name='classroomA'),
     path('B-dif/<int:difficulty>', views.classroomB, name='classroomB'),
     path('<int:difficulty>/<str:classroom>/<int:role_number>/',
-         views.dashboard, name='dashboard'),
+        views.dashboard, name='dashboard'),
     path('notfound', views.notfound, name='notfound'),
     path('log_in', views.log_in, name='log_in'),
     path('log_out', views.log_out, name='log_out'),
     path('read', views.readUsers, name='read'),
     path('updateDelete/<str:username>/',
-         views.updateDeleteUser, name='updateDelete'),
+        views.updateDeleteUser, name='updateDelete'),
     path('create', views.createUser, name='create'),
     path('download', views.download, name='download'),
     path('password_reset', auth_views.PasswordResetView.as_view(
@@ -37,4 +37,5 @@ urlpatterns = [
         success_url = reverse_lazy("zoonicWebsite:password_reset_complete")), name='password_reset_confirm'),
     path('password-reset-complete', auth_views.PasswordResetCompleteView.as_view(
         template_name='resetPassword/password_reset_complete.html'), name='password_reset_complete'),
+    path('landing', views.landing, name = 'landing'),
 ]

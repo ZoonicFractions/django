@@ -1,0 +1,174 @@
+@use '../globals/variables'
+
+@mixin minigame-card($direction)
+    // Dimensions
+    padding: 1rem
+    margin: 1rem
+
+    // Position
+    display: absolute
+
+    // Views
+    opacity: 0
+    transition: all 1.5s
+    filter: blur(5px)
+
+    // Display
+    display: flex
+    gap: 3rem
+    @if $direction == right
+        flex-direction: row
+        transform: translateX(-100%)
+    @else
+        flex-direction: row-reverse
+        transform: translateX(100%)
+    @media (max-width: variables.$width-large)
+        flex-direction: column
+        gap: 0.5rem
+
+    .minigame-card-himg
+        // Dimensions
+        padding: 0.5rem
+
+        // Views
+        border-radius: 10px
+        background-color: variables.$text-white
+
+        h3
+            color: variables.$main-color
+            margin-bottom: 0.25rem
+
+    p
+        display: flex
+        align-items: center
+        color: variables.$text-white
+
+    img
+        width: 100%
+        border-radius: inherit
+
+.landing-main
+    padding: 0
+    overflow: hidden
+
+.landing-main .video-cinematic
+    // Dimensions
+    width: 100%
+    height: 65dvh
+
+    // Display
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+
+    // Views
+    overflow: hidden
+
+.landing-main .video-cinematic video
+    // Dimensions
+    width: 1920px
+
+.landing-main .video-cinematic .video-overlay
+    // Position
+    position: absolute
+
+    // Dimensions
+    width: 100%
+
+.landing-main .video-cinematic .video-overlay h2
+    // Display
+    text-align: center
+
+    // Views
+    color: variables.$main-color
+    font-size: 3.5rem
+
+// .landing-main .card-conatiner:before
+//     content: " "
+//     height: 100px
+//     display: block
+
+.landing-main .card-conatiner
+    // Dimensions
+    width: 100%
+
+    scroll-padding-top: 100px
+
+    // Views
+    background-color: variables.$main-color
+
+    // Display
+    display: flex
+    flex-direction: column
+
+.landing-main .card-conatiner h2
+    // Views
+    font-size: 2rem
+    color: variables.$text-white
+
+    // Dimensions
+    margin: 0rem 1rem
+    padding: 1rem
+
+.minigame-card-left
+    @include minigame-card(left)
+
+.minigame-card-right
+    @include minigame-card(right)
+
+.show
+    // Views
+    opacity: 1
+    transform: translateX(0)
+    filter: blur(0)
+
+.landing-main .downloadables-container
+    // Dimensions
+    min-height: 30rem
+
+    // Display
+    display: flex
+    flex-direction: column
+
+.landing-main .downloadables-container h2
+    // Views
+    font-size: 2rem
+    color: variables.$color-dark
+
+    // Dimensions
+    margin: 0rem 1rem
+    padding: 1rem
+
+.landing-main .downloadables-container .dowloadables-card
+    // Views
+    background-color: variables.$text-white
+    border-radius: 10px
+
+    // Dimensions
+    padding: 0.5rem
+    margin: 0.5rem 2rem
+    height: 100%
+
+    // Display
+    display: flex
+    justify-content: space-evenly
+    align-items: center
+    @media (max-width: variables.$width-large)
+        flex-direction: column
+        gap: 1rem
+
+.landing-main .downloadables-container .dowloadables-card a
+    // Views
+    background-color: variables.$main-color
+    text-align: center
+    border-radius: inherit
+    color: variables.$text-white
+    font-size: 1.5rem
+
+    // Dimensions
+    width: 40%
+    @media (max-width: variables.$width-large)
+        width: 80%
+        font-size: 1rem
+    padding: 2rem 1rem
