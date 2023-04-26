@@ -1,4 +1,0 @@
-Hello,
-We've received a request to reset the password from the Zoonic account associated with email%. No changes have been made to your account yet.
-
-You can reset your password by clicking this link: link%

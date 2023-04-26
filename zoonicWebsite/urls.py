@@ -21,20 +21,20 @@ urlpatterns = [
     path('create', views.createUser, name='create'),
     path('download', views.download, name='download'),
     path('password_reset', auth_views.PasswordResetView.as_view(
-            template_name='zoonicWebsite/password_reset.html',
+            template_name='resetPassword/password_reset.html',
             form_class= forms.ResetForm,
-            email_template_name='zoonicWebsite/password_reset_email.html',
+            email_template_name='resetPassword/password_reset_email.html',
             from_email=EMAIL_HOST_USER,
             success_url = reverse_lazy("zoonicWebsite:password_reset_done"),
-            html_email_template_name='zoonicWebsite/password_reset_email.html'
+            html_email_template_name='resetPassword/password_reset_email.html'
         ), name='password_reset'),
     path('password_reset/done', auth_views.PasswordResetDoneView.as_view(
-        template_name='zoonicWebsite/password_reset_done.html'), 
+        template_name='resetPassword/password_reset_done.html'), 
         name='password_reset_done'),
     path('password_reset_confirm/<uidb64>/<token>', auth_views.PasswordResetConfirmView.as_view(
-        template_name='zoonicWebsite/password_reset_confirm.html',
+        template_name='resetPassword/password_reset_confirm.html',
         form_class=forms.RecoverPassword, 
         success_url = reverse_lazy("zoonicWebsite:password_reset_complete")), name='password_reset_confirm'),
     path('password-reset-complete', auth_views.PasswordResetCompleteView.as_view(
-        template_name='zoonicWebsite/password_reset_complete.html'), name='password_reset_complete'),
+        template_name='resetPassword/password_reset_complete.html'), name='password_reset_complete'),
 ]
