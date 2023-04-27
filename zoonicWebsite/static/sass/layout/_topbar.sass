@@ -19,9 +19,6 @@ header
     @media (max-width: variables.$width-large)
         align-contents: center
 
-        .user-wrapper
-            display: none
-
         span
             display: none
 
@@ -69,6 +66,10 @@ header
     display: flex
     flex-wrap: row
     align-items: center
+
+    @media (max-width: variables.$width-large)
+        img, div
+            display: none
 
 .user-wrapper img
     // Views
