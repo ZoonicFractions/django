@@ -881,7 +881,7 @@ footer a {
 .show-sidebar {
   width: 75dvw;
   opacity: 1;
-  transform: translateX(0%);
+  transform: translateX(0);
   visibility: visible;
 }
 
