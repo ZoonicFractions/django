@@ -117,7 +117,7 @@ def log_in(request):
 
 def log_out(request):
     logout(request)
-    return redirect('zoonicWebsite:log_in')
+    return redirect('zoonicWebsite:landing')
 
 def readUsers(request):
     if request.user.is_authenticated & request.user.is_staff:

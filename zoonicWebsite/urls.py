@@ -6,7 +6,7 @@ from gameServer.settings import EMAIL_HOST_USER
 # Create your urls here.
 app_name = "zoonicWebsite"
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('index', views.index, name='index'),
     path('gen-dif/<int:difficulty>', views.general, name='general'),
     path('A-dif/<int:difficulty>', views.classroomA, name='classroomA'),
     path('B-dif/<int:difficulty>', views.classroomB, name='classroomB'),
@@ -37,5 +37,5 @@ urlpatterns = [
         success_url = reverse_lazy("zoonicWebsite:password_reset_complete")), name='password_reset_confirm'),
     path('password-reset-complete', auth_views.PasswordResetCompleteView.as_view(
         template_name='resetPassword/password_reset_complete.html'), name='password_reset_complete'),
-    path('landing', views.landing, name = 'landing'),
+    path('', views.landing, name = 'landing'),
 ]
