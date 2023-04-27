@@ -2,17 +2,19 @@
 {% load static %}
 {% block sidebar %}
     {% include 'zoonicWebsite/components/sidebar.html' %}
+    {% include 'zoonicWebsite/components/sidebar-phone.html' %}
 {% endblock %}
 {% block topbar %}
     {% include 'zoonicWebsite/components/topbar.html' %}
 {% endblock %}
 {% block container %}
     <h1 class="container-title">
-        Dashboard de: <span id="classroom">{{ classroom }}</span> - <span id="role-number">{{ role_number }}</span>, Dificultad <span id="difficulty">{{ difficulty }}</span>
+        Dashboard de ALguien: <span id="classroom">{{ classroom }}</span> - <span id="role-number">{{ role_number }}</span>, Dificultad <span id="difficulty">{{ difficulty }}</span>
     </h1>
     {% include 'zoonicWebsite/components/container.html' %}
 {% endblock %}
 {% block scripts %}
     <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/areaChart.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/toggleSidebarPhone.js' %}"></script>
 {% endblock %}

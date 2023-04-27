@@ -1,0 +1,72 @@
+{% load static %}
+<div class="sidebar-phone hidden">
+    <div class="sidebar-brand">
+        <a href="{% url 'zoonicWebsite:general' 1 %}">
+            <span class="las la-paw"></span><span> Zoonic</span>
+        </a>
+    </div>
+    <div class="sidebar-menu">
+        <!-- Search box -->
+        <div class="search-wrapper-phone">
+            <input type="search" placeholder="SALÓN" id="input-class">
+            <input type="search" placeholder="# DE LISTA" id="input-role-number">
+            <input type="search" placeholder="DIFICULTAD" id="input-difficulty">
+            <button id="button-search"><span class="las la-search"></span></button>
+        </div>
+
+        <!-- Tags -->
+        <ul>
+            {% if request.user.is_staff %}
+                <li>
+                    <a href="{% url 'zoonicWebsite:read' %}">
+                        <span class="las la-user-cog"></span><span>Usuarios</span>
+                    </a>
+                </li>
+            {% endif %}
+            <li>
+                <p class="sidebar-menu-paragraph" id="GEN">
+                    <span class="las la-igloo"></span><span> General</span>
+                </p>
+                <div class="toggle-menu" id="GEN">
+                    <a href="{% url 'zoonicWebsite:general' 1 %}" class="{% if request.path == '/gen-dif/1' or request.path == '/index' %}active{% else %}{% endif %}">
+                        <span>1</span><span>Dificultad 1</span>
+                    </a>
+                    <a href="{% url 'zoonicWebsite:general' 2 %}" class="{% if request.path == '/gen-dif/2' %}active{% else %}{% endif %}">
+                        <span>2</span><span>Dificultad 2</span>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <p class="sidebar-menu-paragraph" id="A">
+                    <span>A</span><span> Salón A</span>
+                </p>
+                <div class="toggle-menu" id="A">
+                    <a href="{% url 'zoonicWebsite:classroomA' 1 %}" class="{% if request.path == '/A-dif/1' %}active{% else %}{% endif %}">
+                        <span>1</span><span>Dificultad 1</span>
+                    </a>
+                    <a href="{% url 'zoonicWebsite:classroomA' 2 %}" class="{% if request.path == '/A-dif/2' %}active{% else %}{% endif %}">
+                        <span>2</span><span>Dificultad 2</span>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <p class="sidebar-menu-paragraph" id="B">
+                    <span>B</span><span> Salón B</span>
+                </p>
+                <div class="toggle-menu" id="B">
+                    <a href="{% url 'zoonicWebsite:classroomB' 1 %}" class="{% if request.path == '/B-dif/1' %}active{% else %}{% endif %}">
+                        <span>1</span><span>Dificultad 1</span>
+                    </a>
+                    <a href="{% url 'zoonicWebsite:classroomB' 2 %}" class="{% if request.path == '/B-dif/2' %}active{% else %}{% endif %}">
+                        <span>2</span><span>Dificultad 2</span>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="sidebar-toggle phone-toggle">
+        <label>
+            <i class="las la-angle-left"></i>
+        </label>
+    </div>
+</div>

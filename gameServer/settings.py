@@ -27,7 +27,6 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -35,7 +34,7 @@ EMAIL_USE_SSL = False
 SECRET_KEY = 'django-insecure-s%tymcuz52*#xb906!o1#m^vs_ls-9skhnza53kt!s5*!kj^0='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 

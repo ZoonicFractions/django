@@ -2,6 +2,7 @@
 {% load static %}
 {% block sidebar %}
     {% include 'zoonicWebsite/components/sidebar.html' %}
+    {% include 'zoonicWebsite/components/sidebar-phone.html' %}
 {% endblock %}
 {% block topbar %}
     {% include 'zoonicWebsite/components/topbar.html' %}
@@ -25,4 +26,5 @@
     <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
     <script src="{% static 'vendor/chart.js/Chart.bundle.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/pieChart.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/toggleSidebarPhone.js' %}"></script>
 {% endblock %}
