@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.zoho.com'
+EMAIL_HOST = 'smtp.ionos.mx'
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST')
 EMAIL_HOST_PASSWORD = os.getenv('PASSWORD_HOST')
 EMAIL_PORT = 587
@@ -74,6 +74,10 @@ CORS_ORIGIN_WHITELIST = [
     'https://dev.tec.fev.com.mx',
     'http://*.fev.com.mx',
     'https://*.fev.com.mx'
+    'http://zoonic.site',
+    'https://zoonic.site',
+    'http://*.zoonic.site',
+    'https:/*.zoonic.site',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -86,6 +90,10 @@ CSRF_TRUSTED_ORIGINS = [
     'https://dev.tec.fev.com.mx',
     'http://*.fev.com.mx',
     'https://*.fev.com.mx'
+    'http://zoonic.site',
+    'https://zoonic.site',
+    'http://*.zoonic.site',
+    'https:/*.zoonic.site',
 ]
 
 TEMPLATES = [
