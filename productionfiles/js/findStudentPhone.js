@@ -1,4 +1,4 @@
-document.getElementById('button-search').addEventListener("click",() => {
+document.getElementById('button-search-phone').addEventListener("click",() => {
     var classInput = document.getElementById('input-class-phone').value
     var roleNumberInput = document.getElementById('input-role-number-phone').value
     var difficultyInput = document.getElementById('input-difficulty-phone').value

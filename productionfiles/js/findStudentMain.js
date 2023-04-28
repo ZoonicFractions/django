@@ -1,4 +1,4 @@
-document.getElementById('button-search').addEventListener("click",() => {
+document.getElementById('button-search-main').addEventListener("click",() => {
     var classInput = document.getElementById('input-class-main').value
     var roleNumberInput = document.getElementById('input-role-number-main').value
     var difficultyInput = document.getElementById('input-difficulty-main').value
