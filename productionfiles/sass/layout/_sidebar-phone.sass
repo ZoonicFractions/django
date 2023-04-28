@@ -1,0 +1,76 @@
+@use '../globals/variables'
+
+.sidebar-phone
+    // Dimensions
+    width: 0
+    z-index: 1000
+
+    // Hidden
+    transform: translateX(-100%)
+    visibility: hidden
+    opacity: 0
+
+    // Views
+    transition: all 1.5s
+    background-color: variables.$main-color
+
+.show-sidebar
+    // Views
+    width: 85dvw
+    opacity: 1
+    transform: translateX(0)
+    visibility: visible
+
+.sidebar-brand-phone
+    // Dimensions
+    width: inherit
+    padding: 1.5rem 0 1.5rem 1rem
+
+    // Views
+    color: variables.$text-white
+
+    // Display
+    display: flex
+    justify-content: space-between
+
+.sidebar-brand-phone a
+    color: variables.$text-white
+    font-weight: bold
+    font-size: 1.50000rem
+
+
+#close-phone-sidebar
+    display: inline-block
+    padding-right: 1rem
+
+.search-wrapper-phone
+    // Centering Vertically everything inside
+    display: flex
+    flex-wrap: wrap
+
+    // Views
+    border: none
+    height: 50px
+    border-radius: 15px
+
+    transition: all 1.5s
+    
+    margin: 0 1rem 1.5rem
+
+    height: auto
+
+    overflow: hidden
+
+.search-wrapper-phone input
+    padding: 0.5rem
+    border: none
+    flex: 1 0 7.5rem
+
+.search-wrapper-phone span
+    padding: 0.5rem
+    font-size: 1.5rem
+
+.search-wrapper-phone button
+    background-color: variables.$main-color-unactive
+    border: none
+    flex: 1 0 7.5rem

@@ -1,8 +1,12 @@
 {% load static %}
 <div class="sidebar-phone hidden">
-    <div class="sidebar-brand">
-        <a href="{% url 'zoonicWebsite:general' 1 %}">
-            <span class="las la-paw"></span><span> Zoonic</span>
+    <div class="sidebar-brand-phone">
+        <a href="{% url 'zoonicWebsite:landing' %}">
+            <span class="las la-paw"></span> Zoonic
+        </a>
+        
+        <a class="phone-toggle">
+            <span class="las la-times" id="close-phone-sidebar"></span>
         </a>
     </div>
     <div class="sidebar-menu">
