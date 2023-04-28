@@ -73,7 +73,7 @@ CORS_ORIGIN_WHITELIST = [
     'http://dev.tec.fev.com.mx',
     'https://dev.tec.fev.com.mx',
     'http://*.fev.com.mx',
-    'https://*.fev.com.mx'
+    'https://*.fev.com.mx',
     'http://zoonic.site',
     'https://zoonic.site',
     'http://*.zoonic.site',
@@ -89,7 +89,7 @@ CSRF_TRUSTED_ORIGINS = [
     'http://dev.tec.fev.com.mx',
     'https://dev.tec.fev.com.mx',
     'http://*.fev.com.mx',
-    'https://*.fev.com.mx'
+    'https://*.fev.com.mx',
     'http://zoonic.site',
     'https://zoonic.site',
     'http://*.zoonic.site',
