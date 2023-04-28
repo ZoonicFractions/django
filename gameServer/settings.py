@@ -77,7 +77,7 @@ CORS_ORIGIN_WHITELIST = [
     'http://zoonic.site',
     'https://zoonic.site',
     'http://*.zoonic.site',
-    'https:/*.zoonic.site',
+    'https:/*.zoonic.site'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -93,8 +93,8 @@ CSRF_TRUSTED_ORIGINS = [
     'http://zoonic.site',
     'https://zoonic.site',
     'http://*.zoonic.site',
-    'https:/*.zoonic.site',
-]
+    'https:/*.zoonic.site'
+    ]
 
 TEMPLATES = [
     {
