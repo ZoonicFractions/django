@@ -149,3 +149,6 @@ def download(request):
 
 def landing(request):
     return render(request, 'zoonicWebsite/landing.html')
+
+def license(request):
+    return render(request, 'zoonicWebsite/license.html')
