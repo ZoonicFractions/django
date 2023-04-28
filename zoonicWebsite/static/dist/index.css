@@ -882,10 +882,29 @@ footer a {
 }
 
 .show-sidebar {
-  width: 75dvw;
+  width: 85dvw;
   opacity: 1;
   transform: translateX(0);
   visibility: visible;
+}
+
+.sidebar-brand-phone {
+  width: inherit;
+  padding: 1.5rem 0 1.5rem 1rem;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sidebar-brand-phone a {
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+#close-phone-sidebar {
+  display: inline-block;
+  padding-right: 1rem;
 }
 
 .search-wrapper-phone {
@@ -898,24 +917,6 @@ footer a {
   margin: 0 1rem 1.5rem;
   height: auto;
   overflow: hidden;
-}
-
-.search-wrapper-phone input {
-  padding: 0.5rem;
-  border: none;
-  flex: 1 0 7.5rem;
-}
-
-.search-wrapper-phone span {
-  padding: 0.5rem;
-  font-size: 1.5rem;
-}
-
-.search-wrapper-phone button {
-  background-color: #b42459;
-  border: none;
-  flex: 1 0 7.5rem;
-}/*# sourceMappingURL=index.css.map */idden;
 }
 
 .search-wrapper-phone input {
