@@ -46,13 +46,26 @@ def classroomB(request, difficulty):
 def dashboard(request, difficulty, classroom, role_number):
     if request.user.is_authenticated:
         # Calling the Api
-        
         response = requests.get(f'http://localhost:8000/api/view-logs-student/{difficulty}/{classroom}/{role_number}')
         response = response.json()  
         logs = response['logs']
         context = {'total_logs':0, 'last_level':0, 'best_grade':0, 'best_time':0,
-                'classroom': classroom, 'role_number': role_number,
-                'level_logs': {'1':[], '2':[], '3':[]}, 'difficulty': difficulty}
+                   'classroom': classroom, 'role_number': role_number,
+                   'level_logs': {'1':[], '2':[], '3':[]}, 'difficulty': difficulty}
+
+        foundTeachers = Teacher.objects.filter(classroom = context['classroom'])
+        profesoresText = ''
+        if(len(foundTeachers) == 0):
+            profesoresText = 'Sin profesor asignado'
+        elif(len(foundTeachers) == 1):
+            profesoresText = foundTeachers[0].user
+        else:
+            for teacher in foundTeachers:
+                profesoresText += str(teacher.user) + ', '
+
+            profesoresText = profesoresText[:-2]
+
+        context['profesores'] = profesoresText
         
         # Getting all the logs
         context['total_logs'] = len(logs)

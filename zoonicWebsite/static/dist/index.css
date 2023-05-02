@@ -236,8 +236,12 @@ main {
   flex-direction: column;
 }
 
-.container-title {
+.container-title, .container-subtitle {
   margin-bottom: 1rem;
+}
+
+.container-subtitle {
+  color: #8390a2;
 }
 
 .cards {
