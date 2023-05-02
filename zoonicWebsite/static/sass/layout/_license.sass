@@ -1,8 +1,21 @@
+@use '../globals/variables'
+    
 .license-card
     // Dimensions
-    width: 100%
-    height: auto
+    width: 90.0%
+    height: 70%
     padding: 1rem
+    overflow-y: scroll
 
     // Views
-    
+    border-radius: inherit
+    background-color: variables.$text-white
+    text-align: center
+
+    &__paragraph
+        margin-bottom: 1rem
+        @media ( max-width: variables.$width-medium )
+            font-size: 0.750rem
+
+    &__paragraph:first-child
+        font-weight: 900
