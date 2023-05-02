@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views import View
-from .models import Usuario, Registro
+from .models import Teacher, Registro
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 import re, json
@@ -26,7 +26,7 @@ class CreateUser(View):
             keys = list(body.keys())
 
             # Checking the number of parameters
-            if(len(keys) != 6):
+            if(len(keys) != 7):
                 raise Exception('Invalid number of parameters')
 
             # Naming the variables.
@@ -36,6 +36,7 @@ class CreateUser(View):
             last_name = body[keys[3]]
             password = body[keys[4]]
             is_staff = body[keys[5]]
+            classroom = body[keys[6]]
 
             # Checking that all the variables are string type.
             if(not(isinstance(email, str) and isinstance(username, str) and isinstance(password, str) and isinstance(is_staff, bool))):
@@ -55,11 +56,21 @@ class CreateUser(View):
                 last_name = last_name,
                 is_staff = is_staff
             )
+
             # Encrypting the password.
             new_user.set_password(password)
 
             # Storing data.
             new_user.save()
+
+            if(not is_staff):
+                new_user = Teacher(
+                    user = new_user,
+                    classroom = classroom
+                )
+
+                # Storing again (if necessary).
+                new_user.save()
 
             return JsonResponse({'status':"success"}) 
 
@@ -84,7 +95,7 @@ class UpdateUser(View):
             keys = list(body.keys())
  
             # Checking the number of parameters
-            if(len(keys) != 6):
+            if(len(keys) != 7):
                 raise Exception('Invalid number of parameters.')
             
             # Looking for the User.
@@ -99,6 +110,23 @@ class UpdateUser(View):
 
             # Saving changes.
             foundUser.save()
+
+            # Saving changes if the user happens to be a teacher
+            if(not foundUser.is_staff):
+                user = foundUser
+                foundUser = Teacher.objects.filter(user = user.id)
+                if(len(foundUser) == 0):
+                    new_user = Teacher(
+                        user = user,
+                        classroom = body[keys[6]]
+                    )
+
+                    # Storing (if necessary).
+                    new_user.save()
+                else:
+                    foundUser = foundUser[0]
+                    foundUser.classroom = body[keys[6]]
+                    foundUser.save()
     
             return JsonResponse({'status':"success"}) 
         
@@ -122,7 +150,7 @@ class UpdateUserPassword(View):
             keys = list(body.keys())
  
             # Checking the number of parameters
-            if(len(keys) != 7):
+            if(len(keys) != 8):
                 raise Exception('Invalid number of parameters.')
             
             # Looking for the User.
@@ -134,10 +162,27 @@ class UpdateUserPassword(View):
             foundUser.first_name = body[keys[3]]
             foundUser.last_name = body[keys[4]]
             foundUser.is_staff = body[keys[5]]
-            foundUser.set_password(body[keys[6]])
+            foundUser.set_password(body[keys[7]])
 
             # Saving changes.
             foundUser.save()
+
+            # Saving changes if the user happens to be a teacher
+            if(not foundUser.is_staff):
+                user = foundUser
+                foundUser = Teacher.objects.filter(user = user.id)
+                if(len(foundUser) == 0):
+                    new_user = Teacher(
+                        user = user,
+                        classroom = body[keys[6]]
+                    )
+
+                    # Storing (if necessary).
+                    new_user.save()
+                else:
+                    foundUser = foundUser[0]
+                    foundUser.classroom = body[keys[6]]
+                    foundUser.save()
     
             return JsonResponse({'status':"success"}) 
         

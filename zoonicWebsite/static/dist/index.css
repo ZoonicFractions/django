@@ -934,4 +934,10 @@ footer a {
   background-color: #b42459;
   border: none;
   flex: 1 0 7.5rem;
+}
+
+.license-card {
+  width: 100%;
+  height: auto;
+  padding: 1rem;
 }/*# sourceMappingURL=index.css.map */

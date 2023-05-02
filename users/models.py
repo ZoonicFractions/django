@@ -1,13 +1,10 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
-# Model for users such as admins and teachers
-class Usuario(models.Model):
-    # Atributes
-    mail = models.CharField(max_length=200, primary_key = True)
-    role = models.CharField(max_length=200)
-    user_name = models.CharField(max_length=200)
-    password = models.CharField(max_length=200)
+class Teacher(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    classroom = models.CharField(max_length=1)
 
 # Model for student's logs.
 class Registro(models.Model):

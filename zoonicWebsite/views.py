@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from users.models import Registro
+from users.models import Registro, Teacher
 from .processing import get_average
 import requests
 from django.contrib.auth import authenticate, login, logout
@@ -134,6 +134,16 @@ def updateDeleteUser(request, username):
         context = {'username': user.username, 'email': user.email, 
                 'first_name': user.first_name, 'last_name': user.last_name,
                 'is_staff': int(user.is_staff)}
+
+        # Looking for teacher attributes
+        if(not user.is_staff):
+            teacher = Teacher.objects.filter(user = user.id)
+            if(len(teacher) == 0):
+                context['classroom'] = ''
+            else:
+                teacher = teacher[0]
+                context['classroom'] = teacher.classroom
+        
         return render(request, 'zoonicWebsite/updateDeleteUser.html', context)
     else:
         return redirect("zoonicWebsite:log_in")

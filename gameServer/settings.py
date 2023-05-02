@@ -34,7 +34,7 @@ EMAIL_USE_SSL = False
 SECRET_KEY = 'django-insecure-s%tymcuz52*#xb906!o1#m^vs_ls-9skhnza53kt!s5*!kj^0='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -124,6 +124,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+'{"nombre": "Moi","apellidos": "Adame","telefono": 12341, "es_estudiante_tec": "1", "correo": "moi@gmail.com","estado": "Cdmx","nivel_estudios": "Universidad","genero": "M","fecha_nacimiento": "2023-10-25","alias": "moi","tiene_discapacidad": "1","cuenta_github": "feraranas","institucion_educativa": "tecccm","marketing_redsocial": "instagram","carrera_universitaria": "ITC"}'
 
 
 # Password validation
