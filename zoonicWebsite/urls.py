@@ -27,7 +27,8 @@ urlpatterns = [
             email_template_name='resetPassword/password_reset_email.html',
             from_email=EMAIL_HOST_USER,
             success_url = reverse_lazy("zoonicWebsite:password_reset_done"),
-            html_email_template_name='resetPassword/password_reset_email.html'
+            html_email_template_name='resetPassword/password_reset_email.html',
+            subject_template_name='resetPassword/password_reset_subject.txt'
         ), name='password_reset'),
     path('password_reset/done', auth_views.PasswordResetDoneView.as_view(
         template_name='resetPassword/password_reset_done.html'), 
