@@ -6,10 +6,12 @@ document.getElementById('update-user').addEventListener('click', async () => {
     var last_name = document.getElementById('lastname-input').value
     var password = document.getElementById('password-input').value
     var is_staff = document.getElementById('isstaff-input').checked
+    var classroom = document.getElementById('classroom-input').value
 
     if(password === ''){
         var formData = {'primary_key': primary_key, 'username': username, 'email': email, 
-                        'first_name': first_name, 'last_name': last_name, 'is_staff': is_staff }
+                        'first_name': first_name, 'last_name': last_name, 'is_staff': is_staff,
+                        'classroom': classroom}
         await fetch('/api/update-user', {
             method: 'PUT',
             body: JSON.stringify(formData)
@@ -19,7 +21,7 @@ document.getElementById('update-user').addEventListener('click', async () => {
     }else{
         var formData = {'primary_key': primary_key, 'username': username, 'email': email, 
                         'first_name': first_name, 'last_name': last_name, 
-                        'is_staff': is_staff, 'password':password}
+                        'is_staff': is_staff, 'classroom': classroom, 'password':password}
         await fetch('/api/update-userpassword', {
             method: 'PUT',
             body: JSON.stringify(formData)

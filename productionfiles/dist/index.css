@@ -236,8 +236,12 @@ main {
   flex-direction: column;
 }
 
-.container-title {
+.container-title, .container-subtitle {
   margin-bottom: 1rem;
+}
+
+.container-subtitle {
+  color: #8390a2;
 }
 
 .cards {
@@ -451,8 +455,8 @@ footer a {
 }
 
 .login-background {
-  height: inherit;
-  width: inherit;
+  height: 100vh;
+  width: 100%;
   background-color: #F1F5F9;
   display: flex;
   justify-content: center;
@@ -934,4 +938,25 @@ footer a {
   background-color: #b42459;
   border: none;
   flex: 1 0 7.5rem;
-}/*# sourceMappingURL=index.css.map */
+}
+
+.license-card {
+  width: 90%;
+  height: 70%;
+  padding: 1rem;
+  overflow-y: scroll;
+  border-radius: inherit;
+  background-color: white;
+  text-align: center;
+}
+.license-card__paragraph {
+  margin-bottom: 1rem;
+}
+@media (max-width: 500px) {
+  .license-card__paragraph {
+    font-size: 0.75rem;
+  }
+}
+.license-card__paragraph:first-child {
+  font-weight: 900;
+}/*# sourceMappingURL=index.css.map */appingURL=index.css.map */

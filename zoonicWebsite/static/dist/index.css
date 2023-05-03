@@ -105,8 +105,6 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
-  top: 0;
-  z-index: 100;
   box-shadow: rgba(17, 12, 46, 0.1) 0px 0px 50px 0px;
   width: inherit;
   top: 0;
@@ -238,8 +236,12 @@ main {
   flex-direction: column;
 }
 
-.container-title {
+.container-title, .container-subtitle {
   margin-bottom: 1rem;
+}
+
+.container-subtitle {
+  color: #8390a2;
 }
 
 .cards {
@@ -453,8 +455,8 @@ footer a {
 }
 
 .login-background {
-  height: inherit;
-  width: inherit;
+  height: 100vh;
+  width: 100%;
   background-color: #F1F5F9;
   display: flex;
   justify-content: center;
@@ -936,7 +938,9 @@ footer a {
   background-color: #b42459;
   border: none;
   flex: 1 0 7.5rem;
-}/*# sourceMappingURL=index.css.map */icense-card {
+}
+
+.license-card {
   width: 90%;
   height: 70%;
   padding: 1rem;
@@ -955,4 +959,4 @@ footer a {
 }
 .license-card__paragraph:first-child {
   font-weight: 900;
-}/*# sourceMappingURL=index.css.map */
+}/*# sourceMappingURL=index.css.map */appingURL=index.css.map */
